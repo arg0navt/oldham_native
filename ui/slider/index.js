@@ -2,25 +2,38 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, Dimensions } from 'react-native';
 import slider from '../../css/slider'
 import global from '../../css/global';
-import Carousel from 'react-native-carousel';
+import Swiper from 'react-native-swiper';
 
 const w = Dimensions.get('window');
 
 var styles = StyleSheet.create({
-  container: {
-    width: Dimensions.get('window').width - 30,
-    height:200,
+  wrapper: {
+      height:174
+  },
+  slide1: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent',
   },
+  slide2: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  slide3: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold',
+  }
 })
 
 export default class Slider extends Component{
     render(){
         return(
-            <View style={slider.sliderWrap}>
-                <Carousel >
+            <View style={styles.wrapper}>
+                <Swiper style={styles.slide1}>
                     <View style={styles.container}>
                         <View style={slider.slide}>
                             <Image source={require('./img/picher/slider.jpg')} style={slider.blockImg} resizeMode="stretch"></Image>
@@ -38,7 +51,7 @@ export default class Slider extends Component{
                             </View>
                         </View>
                     </View>
-                    <View style={styles.container}>
+                    <View style={styles.slide2}>
                         <View style={slider.slide}>
                             <Image source={require('./img/picher/slider.jpg')} style={slider.blockImg} resizeMode="stretch"></Image>
                             <View style={slider.blockText}>
@@ -55,7 +68,7 @@ export default class Slider extends Component{
                             </View>
                         </View>
                     </View>
-                </Carousel>
+                </Swiper>
             </View>
         )
     }

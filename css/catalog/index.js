@@ -6,6 +6,9 @@ export default StyleSheet.create({
         width:'50%',
         padding:2.5,
     },
+    blockImage:{
+        width:'100%'
+    },
     catalogRow:{
         width:'100%',
         flexDirection:'row',
@@ -42,7 +45,6 @@ export default StyleSheet.create({
         alignSelf:'center',
     },
     iconImg:{
-        display:'block',
         margin:'auto'
     },
     iconText:{

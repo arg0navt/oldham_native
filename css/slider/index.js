@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+    slideWrapList:{
+        height:173,
+    },
     slide:{
         overflow:'hidden',
         width:'100%',

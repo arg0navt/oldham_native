@@ -2,8 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     blockCard:{
-        flex:1,
-        overflow:'hidden',
         height:200,
         position:'relative'
     },

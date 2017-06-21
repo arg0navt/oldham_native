@@ -15,7 +15,7 @@ export default StyleSheet.create({
     buttonNav:{
         width:17,
         height:13,
-        display:'block',
+        display:'flex',
     },
     buttonNavWr:{
         width:44
@@ -27,18 +27,18 @@ export default StyleSheet.create({
     logo:{
         width:44,
         height:33,
-        display:'block',
+        display:'flex',
     },
     buttonShop:{
         width:22,
         height:22,
         position:'relative',
-        display:'block',
+        display:'flex',
     },
     buttonShopImage:{
         height:22,
         width:22,
-        display:'block',
+        display:'flex',
         marginLeft:18,
     },
     numShop:{

@@ -4,10 +4,13 @@ export default StyleSheet.create({
     blockCard:{
         height:200,
         position:'relative',
+        marginTop:15
     },
     cardContent:{
         position:'absolute',
         zIndex:1,
+        top:0,
+        left:0,
         width:'100%',
         height:'100%'
     },
@@ -111,5 +114,26 @@ export default StyleSheet.create({
         width:90,
         height:42,
         marginTop:2,
+    },
+    noUserText:{
+        fontSize:10,
+        color:'#fff',
+        marginTop:4,
+        marginBottom:7
+    },
+    noUserButton:{
+        borderWidth:1,
+        borderColor:'#fff',
+        borderStyle:'solid',
+        height:30,
+        borderRadius: 5,
+        width: 140,
+        backgroundColor:'rgba(0,0,0,0)'
+    },
+    noUserButtonText:{
+        textAlign: 'center',
+        fontSize: 10,
+        color: '#fff',
+        marginTop:5
     }
 })

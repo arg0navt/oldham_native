@@ -6,9 +6,14 @@ export default StyleSheet.create({
     },
     slide:{
         overflow:'hidden',
-        width:'100%',
         height:173,
         position:'relative'
+    },
+    center:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'center',
+        height:45
     },
     blockImg:{
         borderRadius:10,
@@ -19,10 +24,10 @@ export default StyleSheet.create({
     },
     blockText:{
         position:'relative',
-        height:70,
+        height:45,
         backgroundColor:'rgba(0,0,0,.8)',
         zIndex:2,
-        marginTop:-70
+        marginTop:-45,
     },
     sliderText:{
         fontSize:12,
@@ -32,18 +37,14 @@ export default StyleSheet.create({
     sliderLink:{
         color:'#fff',
         fontSize:13,
-        marginRight:0,
-        paddingRight:0,
-        width:65
+        width:65,
     },
     leftText:{
         width:'65%',
         paddingLeft:15,
-        paddingTop:20
     },
     rightText:{
         width:'35%',
         paddingRight:15,
-        paddingTop:25
     }
 })

@@ -8,8 +8,12 @@ import BottomPanel from '../../ui/bottomPanel'
 import { Provider, connect } from 'react-redux'
 import {Router, routerReducer, Route, Container, Animations, Schema} from 'react-native-redux-router'
 import { url } from '../../config'
+import UserHoc from '../../hoc/userHoc'
 
 class Children extends Component{
+    componentDidMount(){
+        this.props.getToken()
+    }
     render(){
         return (
             <View style={AppCss.App}>
@@ -30,5 +34,7 @@ export default connect(
     state => ({
         Store: state
     }),
-    dispatch =>({})
-)(Children)
+    dispatch =>({
+        pushToken:(token) => {dispatch({type:'@user.TOKEN', payload:token})}
+    })
+)(UserHoc(Children))

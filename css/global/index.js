@@ -19,16 +19,22 @@ export default StyleSheet.create({
     col4:{
         position:'relative',
         display:'flex',
-        alignSelf:'center',
+        alignItems:'flex-start',
     },
     left:{
-        
+        paddingTop:3
     },
     center:{
-        
+        width:100,
+        height:30
     },
     right:{
         justifyContent:'flex-end',
-        alignItems:'flex-end',
+        alignItems:'flex-start',
+    },
+    noPadding:{
+        paddingLeft:0,
+        paddingRight:0,
+        width:'100%'
     }
 })

@@ -17,8 +17,8 @@ class Children extends Component{
     render(){
         return (
             <View style={AppCss.App}>
-                <StatusBar barStyle="light-content" />
                 <Header />
+                <StatusBar barStyle="light-content" />
                 <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={AppCss.bg}>
                     <Router>
                         <Route name="home" component={Home} title="Home" type="replace"/>

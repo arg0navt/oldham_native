@@ -1,13 +1,12 @@
 import { StyleSheet } from 'react-native';
 
+
 export default StyleSheet.create({
     header:{
         width:'100%',
         height:70,
         paddingTop:25,
         backgroundColor:'#111111',
-        paddingLeft:15,
-        paddingRight:12,
         position:'absolute',
         zIndex:10,
         overflow:'visible',

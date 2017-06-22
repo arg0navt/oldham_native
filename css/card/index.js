@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     blockCard:{
         height:200,
-        position:'relative'
+        position:'relative',
     },
     cardContent:{
         position:'absolute',

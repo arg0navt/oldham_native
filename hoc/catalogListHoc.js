@@ -7,7 +7,7 @@ const CataloListHoc = (ComposedComponent) => {
         getType(){
             axios.get(Api('Pwa','getCategories'))
             .then((response) => {
-                console.log(response)
+                this.pushCategory(response.data[0].result)
             })
             .catch((error) => {console.log(error)})
         }

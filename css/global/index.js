@@ -6,8 +6,8 @@ export default StyleSheet.create({
         paddingLeft:15,
         paddingRight:15,
         width:'100%',
-        overflow:'hidden',
-        position:'relative'
+        position:'relative',
+        flex:1
     },
     row:{
         width:'100%',

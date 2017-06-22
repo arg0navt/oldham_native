@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import card from '../../css/card'
@@ -43,6 +45,7 @@ export default class Card extends Component{
         }
     }
     render(){
+        let Actions = this.props.routes;
         return(
             <View style={card.blockCard}>
                 <View style={card.cardContent}>

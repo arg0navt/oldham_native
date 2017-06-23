@@ -9,6 +9,13 @@ export default StyleSheet.create({
         position:'relative',
         flex:1
     },
+    center:{
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'center',
+        alignItems:'center',
+        flexDirection:'row'
+    },
     row:{
         width:'100%',
         display:'flex',

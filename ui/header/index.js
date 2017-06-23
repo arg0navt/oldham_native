@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { AppRegistry, Navigator, StyleSheet, Text, View, Image, ScrollView, Dimensions } from 'react-native';
 import global from '../../css/global';
 import styleHeader from '../../css/header';
+import { connect } from 'react-redux'
 import { url } from '../../config'
 
 const w = Dimensions.get('window');
@@ -33,4 +34,11 @@ class Header extends Component{
         )
     }
 }
-module.exports = Header;
+export default connect(
+    state => ({
+        Store: state
+    }),
+    dispatch =>({
+        
+    })
+)(Header)

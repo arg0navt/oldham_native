@@ -4,6 +4,7 @@ import global from '../../css/global';
 import styleHeader from '../../css/header';
 import { connect } from 'react-redux'
 import { url } from '../../config'
+import { Router, Route, Animations, Schema } from 'react-native-redux-router'
 
 const w = Dimensions.get('window');
 
@@ -11,7 +12,6 @@ class Header extends Component{
     openNavigation(){
         this.props.openPanel()
     }
-    
     render(){
         return (
             <Navigator
@@ -43,8 +43,5 @@ class Header extends Component{
 export default connect(
     state => ({
         Store: state
-    }),
-    dispatch =>({
-        toogleNav: () => (dispatch({type:'TOOFLE_NAV'}))
     })
 )(Header)

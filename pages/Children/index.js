@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, StatusBar  } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, StatusBar, TouchableOpacity  } from 'react-native';
 import Drawer from 'react-native-drawer'
 import Home from '../Home'
+import Login from '../Login';
+import ComeIn from '../ComeIn';
 import AppCss from '../../css/AppStyle';
 import global from '../../css/global';
 import Header from '../../ui/header';
@@ -16,30 +18,28 @@ class Children extends Component{
     componentDidMount(){
         this.props.getToken()
     }
-    closeControlPanel = () => {
-        this._drawer.close()
-    };
     openControlPanel = () => {
         this._drawer.open()
-    };
+    }
     render(){
         var navigationView = (
             <Navigation />
         )
         return (
-            <View style={AppCss.App}>
+            <View style={{flex:1}}>
                 <Drawer
                 openDrawerOffset={0.45}
                 closedDrawerOffset={-3}
                 tapToClose={true}
-                tweenHandler={Drawer.tweenPresets.parallax}
                 ref={(ref) => this._drawer = ref}
                 content={<Navigation />}
             >
                 <Header openPanel={this.openControlPanel} />
                 <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={AppCss.bg}>
                     <Router>
-                        <Route name="home" component={Home} title="Home" type="replace"/>
+                        <Route name="home" initial={true} component={Home} title="Home" />
+                        <Route name="comein" component={ComeIn} title="Вход" sceneConfig={Animations.FlatFloatFromRight} type="push"/>
+                        <Route name="login" component={Login} title="Вход" sceneConfig={Animations.FlatFloatFromRight} type="push"/>
                     </Router>
                 </Image>
                 </Drawer>

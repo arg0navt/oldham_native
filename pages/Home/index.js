@@ -5,7 +5,7 @@ import Catalog from '../../ui/catalog'
 import Card from '../../ui/card'
 import AppCss from '../../css/AppStyle';
 import global from '../../css/global';
-import {Actions} from  'react-native-redux-router'
+import {Router, Route, Animations, Schema, Actions} from  'react-native-redux-router'
 import { Provider, connect } from 'react-redux'
 
 class Home extends Component{

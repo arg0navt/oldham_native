@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import card from '../../css/card'
 import global from '../../css/global';
 import progressBar from '../../css/progressBar'
 import ResponsiveImage from 'react-native-responsive-image';
 import { url } from '../../config'
 import { connect } from 'react-redux'
+import {Actions} from  'react-native-redux-router'
 
 const BarItem = ({progress, procent, status, active, length}) => (
     <View className={active == 'active' ? [progressBar.item, progressBar.active] : progressBar.item} >
@@ -46,8 +47,11 @@ class Card extends Component{
             num: 74
         }
     }
+    go(){
+        Actions.comein
+        console.log(this)
+    }
     render(){
-        let Actions = this.props.routes;
         const { Store } = this.props
         const { user } = this.props.Store
         const { profile, loyalty, token } = this.props.Store.user
@@ -74,9 +78,9 @@ class Card extends Component{
                     ) : (
                         <View style={card.cardInfo}>
                             <Text style={card.noUserText}>Заполните свой профиль{"\n"}для получения BASIS CARD 5%</Text>
-                            <TouchableHighlight activeOpacity={1} style={card.noUserButton}>
+                            <TouchableOpacity onPress={Actions.comein} activeOpacity={1} style={card.noUserButton}>
                                 <Text style={card.noUserButtonText}>войти в свой аккаунт</Text>
-                            </TouchableHighlight>
+                            </TouchableOpacity>
                         </View>
                     )}
                     </View>

@@ -18,7 +18,9 @@ export default StyleSheet.create({
         width:'100%',
         paddingRight:15,
         paddingTop:15,
-        display:'flex'
+        display:'flex',
+        position:'relative',
+        zIndex:100
     },
     cardLogo:{
         width:'40%',
@@ -128,12 +130,12 @@ export default StyleSheet.create({
         height:30,
         borderRadius: 5,
         width: 140,
-        backgroundColor:'rgba(0,0,0,0)'
+        backgroundColor:'rgba(0,0,0,0)',
     },
     noUserButtonText:{
         textAlign: 'center',
         fontSize: 10,
         color: '#fff',
-        marginTop:5
+        marginTop:5,
     }
 })

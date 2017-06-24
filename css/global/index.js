@@ -6,8 +6,8 @@ export default StyleSheet.create({
         paddingLeft:15,
         paddingRight:15,
         width:'100%',
+        flex:1,
         position:'relative',
-        flex:1
     },
     center:{
         display:'flex',
@@ -30,10 +30,6 @@ export default StyleSheet.create({
     },
     left:{
         paddingTop:3
-    },
-    center:{
-        width:100,
-        height:30
     },
     right:{
         justifyContent:'flex-end',

@@ -26,6 +26,7 @@
     "react-native-carousel": "^0.10.0",
     "react-native-console-panel": "^0.1.0",
     "react-native-drawer": "^2.3.0",
+    "react-native-floating-labels": "^1.1.4",
     "react-native-looped-carousel": "^0.1.7",
     "react-native-navigation": "^1.1.61",
     "react-native-redux-router": "^1.0.7",

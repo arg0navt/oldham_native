@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, StatusBar  } from 'react-native';
+import Drawer from 'react-native-drawer'
 import Home from '../Home'
 import AppCss from '../../css/AppStyle';
 import global from '../../css/global';
@@ -15,16 +16,33 @@ class Children extends Component{
     componentDidMount(){
         this.props.getToken()
     }
+    closeControlPanel = () => {
+        this._drawer.close()
+    };
+    openControlPanel = () => {
+        this._drawer.open()
+    };
     render(){
+        var navigationView = (
+            <Navigation />
+        )
         return (
             <View style={AppCss.App}>
-                <Navigation />
-                <Header />
+                <Drawer
+                openDrawerOffset={0.45}
+                closedDrawerOffset={-3}
+                tapToClose={true}
+                tweenHandler={Drawer.tweenPresets.parallax}
+                ref={(ref) => this._drawer = ref}
+                content={<Navigation />}
+            >
+                <Header openPanel={this.openControlPanel} />
                 <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={AppCss.bg}>
                     <Router>
                         <Route name="home" component={Home} title="Home" type="replace"/>
                     </Router>
                 </Image>
+                </Drawer>
             </View>
         )
     }

@@ -4,29 +4,16 @@ export default StyleSheet.create({
     avtorization:{
         width:'100%',
         marginTop:45,
-        paddingBottom:35
-    },
-    navWrap:{
-        width:'100%',
-        height:'100%',
-        position:'absolute',
-        top:0,
-        left:0,
-        backgroundColor:'rgba(0,0,0,.5)',
-        zIndex:99,
-    },
-    activeShadow:{
-        opacity:1,
-        left:0
-    },
-    navActive:{
-        left:0,
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'center',
+        alignItems:'center',
+        flexDirection:'row',
+        marginBottom:35
     },
     nav:{
-        width:220,
-        height:'100%',
+        flex: 1,
         backgroundColor:'#181818',
-        zIndex:110,
         paddingLeft:15,
         paddingRight:15,
     },
@@ -34,17 +21,20 @@ export default StyleSheet.create({
         padding:0
     },
     li:{
-        paddingBottom:'1px',
+        paddingBottom:1,
         overflow:'hidden',
         marginBottom:21,
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'flex-start',
+        alignItems:'center',
+        flexDirection:'row',
     },
     iconWrap:{
        width:24,
        marginRight:20
     },
     icon:{
-        display:'block',
-        margin:'auto'
     },
     liText:{
         fontSize:14,

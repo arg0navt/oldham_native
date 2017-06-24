@@ -46,9 +46,6 @@ class Card extends Component{
             num: 74
         }
     }
-    go(){
-
-    }
     render(){
         let Actions = this.props.routes;
         const { Store } = this.props

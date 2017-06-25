@@ -18,4 +18,4 @@ class App extends Component {
 }
 export default App
 
-AppRegistry.registerComponent('Example', () => Example);
+AppRegistry.registerComponent('App', () => App);

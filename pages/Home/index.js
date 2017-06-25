@@ -7,8 +7,12 @@ import AppCss from '../../css/AppStyle';
 import global from '../../css/global';
 import {Router, Route, Animations, Schema, Actions} from  'react-native-redux-router'
 import { Provider, connect } from 'react-redux'
+import { StackNavigator } from 'react-navigation';
 
 class Home extends Component{
+    componenDidMount(){
+        console.log(this)
+    }
     render(){
         return(
             <ScrollView style={global.content}>

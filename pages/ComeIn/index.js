@@ -15,7 +15,7 @@ class ComeIn extends Component{
                     <TouchableOpacity style={[c.button, c.comeinButtonLogin]} onPress={Actions.login} activeOpacity={1}>
                         <Text style={c.buttonText}>Войти</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[c.button, c.comeinButtonRegistration]} onPress={Actions.pop} activeOpacity={1}>
+                    <TouchableOpacity style={[c.button, c.comeinButtonRegistration]} onPress={Actions.registration} activeOpacity={1}>
                         <Text style={c.buttonText}>Регистрация</Text>
                     </TouchableOpacity>
                 </View>

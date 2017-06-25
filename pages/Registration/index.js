@@ -5,16 +5,17 @@ import global from '../../css/global';
 import c from '../../css/comein';
 import {Actions} from 'react-native-redux-router'
 import FloatingLabel from 'react-native-floating-labels'
-import UserHoc from '../../hoc/userHoc'
 
 const w = Dimensions.get('window');
 
-class Login extends Component{
+class Registration extends Component{
     constructor(props){
         super(props)
         this.state = {
             error:'',
+            name:'',
             login:'',
+            cod:'',
             password:''
         }
     }
@@ -25,38 +26,47 @@ class Login extends Component{
             items,
         })
     }
-    login(token, login, password){
-        this.props.getLogin(token, login, password)
-        Actions.home
-    }
     render(){
-        const {token} = this.props.Store.user
         return(
             <ScrollView style={global.content}>
                 <View style={[{height:w.height - 75}, c.wrap]}>
                 <View style={c.comeinCenter}>
-                    <Text style={c.comeinTextLogin}>Для входа на сайт введите ваш номер телефона и пароль</Text>
                     <TextInput
-                        style={c.formInput}
-                        onChangeText={(text) => this.setState({login:text})}
-                        value={this.state.login}
-                        placeholder={'Логин'}
+                        style={c.formInputReg}
+                        onChange={this.change.bind(this, 'name')}
+                        value={this.state.name}
+                        placeholder={'Имя'}
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
                     />
                     <TextInput
-                        style={[c.formInput, {marginBottom:30}]}
-                        onChangeText={(text) => this.setState({password:text})}
+                        style={c.formInputReg}
+                        onChange={this.change.bind(this, 'login')}
+                        value={this.state.login}
+                        placeholder={'Номер телефона'}
+                        placeholderTextColor={'#fff'}
+                        underlineColorAndroid={'rgba(0,0,0,0)'}
+                    />
+                    <TextInput
+                        style={[c.formInputReg]}
+                        onChange={this.change.bind(this, 'password')}
                         value={this.state.password}
                         secureTextEntry={true}
                         placeholder={'Пароль'}
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
                     />
-                    <TouchableOpacity style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]} onPress={Actions.home} activeOpacity={1}>
-                        <Text style={c.buttonText}>Войти</Text>
+                    <TextInput
+                        style={[c.formInputReg, {marginBottom:80}]}
+                        onChange={this.change.bind(this, 'cod')}
+                        value={this.state.cod}
+                        placeholder={'Код приглашения'}
+                        placeholderTextColor={'#fff'}
+                        underlineColorAndroid={'rgba(0,0,0,0)'}
+                    />
+                    <TouchableOpacity style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]} onPress={Actions.login} activeOpacity={1}>
+                        <Text style={c.buttonText}>Зарегистрироваться</Text>
                     </TouchableOpacity>
-                        <Text style={c.buttonText}>Забыли пароль?</Text>
                 </View>
                 </View>
             </ScrollView>
@@ -65,7 +75,5 @@ class Login extends Component{
 }
 export default connect(
     state => ({Store: state}),
-    dispatch =>({
-        pushProfile: (item) => {dispatch({type:'@user.PROFILE', payload:item})}
-    })
-)(UserHoc(Login))
+    dispatch =>({})
+)(Registration)

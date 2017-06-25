@@ -11,8 +11,15 @@ const UserHoc = (ComposedComponent) => {
             })
             .catch((error) => {console.log(error)})
         }
+        getLogin(token, login, password){
+            axios.get(Api('Auth','auth',`"token":"${token}","login":"${login}","password":"${password}"`))
+            .then((response)=>{
+                this.pushProfile(response.data[0].result.user)
+            })
+            .catch((error) => { console.log('Ошибка от сервера') })
+        }
         render() {
-            return <ComposedComponent getToken={this.getToken} {...this.props} {...this.state} />;
+            return <ComposedComponent getToken={this.getToken} getLogin={this.getLogin} {...this.props} {...this.state} />;
         }
     }
     return UserHoc

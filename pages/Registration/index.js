@@ -28,8 +28,7 @@ class Registration extends Component{
     }
     render(){
         return(
-            <ScrollView style={global.content}>
-                <View style={[{height:w.height - 75}, c.wrap]}>
+            <View style={[{height:w.height - 75}, c.wrap]}>
                 <View style={c.comeinCenter}>
                     <TextInput
                         style={c.formInputReg}
@@ -68,8 +67,7 @@ class Registration extends Component{
                         <Text style={c.buttonText}>Зарегистрироваться</Text>
                     </TouchableOpacity>
                 </View>
-                </View>
-            </ScrollView>
+            </View>
         )
     }
 }

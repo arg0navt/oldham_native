@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, StatusBar, Button  } from 'react-native';
+import { View, ScrollView  } from 'react-native';
+import Drawer from 'react-native-drawer'
+import AppCss from '../../css/AppStyle';
+import global from '../../css/global';
+import { connect } from 'react-redux'
+import { url } from '../../config'
+import UserHoc from '../../hoc/userHoc'
 import Slider from '../../ui/slider'
 import Catalog from '../../ui/catalog'
 import Card from '../../ui/card'
-import AppCss from '../../css/AppStyle';
-import global from '../../css/global';
-import {Router, Route, Animations, Schema, Actions} from  'react-native-redux-router'
-import { Provider, connect } from 'react-redux'
-import { StackNavigator } from 'react-navigation';
 
 class Home extends Component{
-    componenDidMount(){
-        console.log(this)
-    }
     render(){
-        return(
-            <ScrollView style={global.content}>
+        return (
+            <ScrollView style={{flex:1, paddingLeft:15, paddingRight:15}}>
                 <Slider />
-                <Card />
+                <Card nav={this.props.navigator} />
                 <Catalog />
             </ScrollView>
         )
@@ -28,5 +26,7 @@ export default connect(
     state => ({
         Store: state
     }),
-    dispatch =>({})
-)(Home)
+    dispatch =>({
+        pushToken:(token) => {dispatch({type:'@user.TOKEN', payload:token})}
+    })
+)(UserHoc(Home))

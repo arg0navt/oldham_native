@@ -7,6 +7,8 @@ import ResponsiveImage from 'react-native-responsive-image';
 import { url } from '../../config'
 import { connect } from 'react-redux'
 import {Actions} from  'react-native-redux-router'
+import ComeIn from '../../pages/ComeIn';
+import routes from '../../config/routes'
 
 const BarItem = ({progress, procent, status, active, length}) => (
     <View className={active == 'active' ? [progressBar.item, progressBar.active] : progressBar.item} >
@@ -47,10 +49,6 @@ class Card extends Component{
             num: 74
         }
     }
-    go(){
-        Actions.comein
-        console.log(this)
-    }
     render(){
         const { Store } = this.props
         const { user } = this.props.Store
@@ -78,7 +76,7 @@ class Card extends Component{
                     ) : (
                         <View style={card.cardInfo}>
                             <Text style={card.noUserText}>Заполните свой профиль{"\n"}для получения BASIS CARD 5%</Text>
-                            <TouchableOpacity onPress={Actions.comein} activeOpacity={1} style={card.noUserButton}>
+                            <TouchableOpacity onPress={() => this.props.nav.jumpTo(routes[1])} activeOpacity={1} style={card.noUserButton}>
                                 <Text style={card.noUserButtonText}>войти в свой аккаунт</Text>
                             </TouchableOpacity>
                         </View>

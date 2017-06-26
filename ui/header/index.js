@@ -9,30 +9,29 @@ import { Router, Route, Animations, Schema, Actions } from 'react-native-redux-r
 const w = Dimensions.get('window');
 
 class Header extends Component{
+    componentDidMount(){
+        console.log(this)
+    }
     openNavigation(){
         this.props.openPanel()
     }
     render(){
-        const {currentRoute} = this.props.Store.routerReducer
+        const { route, navigator } = this.props
         return (
-            <Navigator
-                barTintColor="#fff" 
-                style={styleHeader.header}
-                initialRoute={{}}
-                renderScene={(route, navigator) => (
-                    <View style={[global.row, global.noPadding]}>
-                        <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={[global.row, {height: w.height, width: w.width, paddingTop:22, paddingLeft:15, paddingRight:15, alignItems:'flex-start', marginTop:-10}]} resizeMode="stretch">
+            <View style={{height:60}}>
+            <View style={styleHeader.header}>
+                <View style={[global.row, global.noPadding]}>
+                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={[global.row, {height: w.height, width: w.width, paddingTop:22, paddingLeft:15, paddingRight:15, alignItems:'flex-start', marginTop:-10}]} resizeMode="stretch">
                         <View style={[global.col4, global.left]}>
-                            {currentRoute == 'home' ? (
+                            {route.index == 0 ? (
                                 <TouchableOpacity onPress={this.openNavigation.bind(this)}>
                                     <View style={styleHeader.buttonNavWr}><Image style={styleHeader.buttonNav} source={require("./img/icon/nav.png")} ></Image></View>
                                 </TouchableOpacity>
                             ) : (
-                                <TouchableOpacity onPress={Actions.pop}>
+                                <TouchableOpacity onPress={() => navigator.jumpBack()}>
                                     <View style={styleHeader.buttonNavWr}><Image style={styleHeader.buttonNav} source={require("../../img/icon/back.png")} ></Image></View>
                                 </TouchableOpacity>
                             )}
-                            
                         </View>
                         <View style={[global.col4, global.center]}>
                             <View style={styleHeader.logoWr}></View>
@@ -40,11 +39,10 @@ class Header extends Component{
                         <View style={[global.col4, global.right]}>
                             <View style={styleHeader.buttonShopWr}><Image style={styleHeader.buttonShopImage} source={require("./img/icon/shop.png")} ><View style={styleHeader.numShop}></View></Image></View>
                         </View>
-                        </Image>
-                    </View>
-                )}
-            >
-            </Navigator>
+                    </Image>
+                </View>
+            </View>
+            </View>
         )
     }
 }

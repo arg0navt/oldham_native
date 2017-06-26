@@ -6,6 +6,7 @@ import c from '../../css/comein';
 import {Actions} from 'react-native-redux-router'
 import FloatingLabel from 'react-native-floating-labels'
 import UserHoc from '../../hoc/userHoc'
+import { url } from '../../config'
 
 const w = Dimensions.get('window');
 

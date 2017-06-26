@@ -19,16 +19,8 @@ class Login extends Component{
             password:''
         }
     }
-    change(key, event){
-        const items = this.state[key];
-        this.state[key] = event.target.value;
-        this.setState({
-            items,
-        })
-    }
     login(token, login, password){
         this.props.getLogin(token, login, password)
-        Actions.home
     }
     render(){
         const {token} = this.props.Store.user
@@ -54,7 +46,7 @@ class Login extends Component{
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
                     />
-                    <TouchableOpacity style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]} onPress={Actions.home} activeOpacity={1}>
+                    <TouchableOpacity style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]} onPress={this.login.bind(this, token, this.state.login, this.state.password)} activeOpacity={1}>
                         <Text style={c.buttonText}>Войти</Text>
                     </TouchableOpacity>
                         <Text style={c.buttonText}>Забыли пароль?</Text>
@@ -67,6 +59,9 @@ class Login extends Component{
 export default connect(
     state => ({Store: state}),
     dispatch =>({
-        pushProfile: (item) => {dispatch({type:'@user.PROFILE', payload:item})}
+        pushProfile: (item) => {dispatch({type:'PROFILE', payload:item})},
+        pushLoyalty: (item) => {dispatch({type:'LOYALITY', payload:item})},
+        initError: (text) => {dispatch({type:'ERROR', payload:text})},
+        removeError:() => {dispatch({type:'DROP_ERROR'})}
     })
 )(UserHoc(Login))

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Image, Navigator, Dimensions } from 'react-native';
+import { AppRegistry, View, Image, Navigator, Dimensions, Text } from 'react-native';
 import {createStore,combineReducers, applyMiddleware} from 'redux';
 import { Provider, connect } from 'react-redux'
 import Header from './ui/header';
@@ -16,6 +16,9 @@ const w = Dimensions.get('window');
 class App extends React.Component {
   openControlPanel = () => {
       this._drawer.open()
+  }
+  componentDidMount(){
+    console.log(this)
   }
   render() {
     return (
@@ -39,13 +42,20 @@ class App extends React.Component {
               )}      
             />
         </Drawer>
+        {this.props.Store.error.errorStatus == true ? (
+          <View style={{flex:1, position:'absolute',top:0,bottom:0,left:0,right:0,zIndex:99,display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
+            <View style={{width:300,backgroundColor:'rgba(0,0,0,.9)',borderRadius:6, minHeight:150,display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row', padding:25}}>
+              <Text style={{color:'#fff'}}>{this.props.Store.error.errorText}</Text>
+            </View>
+          </View>
+        ): (<View></View>)}
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  nav: state.nav
+  Store: state
 });
 
 const AppWithNavigationState = connect(mapStateToProps)(App);

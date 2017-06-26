@@ -7,20 +7,16 @@ export default StyleSheet.create({
         marginTop:15
     },
     cardContent:{
-        position:'absolute',
-        zIndex:1,
-        top:0,
-        left:0,
+        position:'relative',
         width:'100%',
-        height:'100%'
+        height:'100%',
+        minHeight:208,
+        zIndex:2
     },
     cardTop:{
         width:'100%',
         paddingRight:15,
         paddingTop:15,
-        display:'flex',
-        position:'relative',
-        zIndex:100
     },
     cardLogo:{
         width:'40%',
@@ -63,11 +59,9 @@ export default StyleSheet.create({
     cardBottom:{
         width:'100%',
         height:65,
-        backgroundColor:'#141414',
+        marginTop:5,
         paddingLeft:15,
         paddingRight:15,
-        position:'absolute',
-        bottom:20,
     },
     cardBottomLeft:{
         width:'30%',
@@ -137,5 +131,23 @@ export default StyleSheet.create({
         fontSize: 10,
         color: '#fff',
         marginTop:5,
-    }
+    },
+    cardProcent:{
+        width:87,
+        height:50
+    },
+    procentSpan:{
+        fontSize:35,
+        color:'#fff',
+        textAlign:'center',
+        position:'absolute',
+        width:'100%',
+        lineHeight: 35
+    },
+    procentText:{
+        fontSize:10,
+        color:'#fff',
+        textAlign:'center',
+        marginTop:6
+    },
 })

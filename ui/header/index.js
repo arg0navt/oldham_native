@@ -9,9 +9,6 @@ import { Router, Route, Animations, Schema, Actions } from 'react-native-redux-r
 const w = Dimensions.get('window');
 
 class Header extends Component{
-    componentDidMount(){
-        console.log(this)
-    }
     openNavigation(){
         this.props.openPanel()
     }

@@ -11,6 +11,14 @@ import Catalog from '../../ui/catalog'
 import Card from '../../ui/card'
 
 class Home extends Component{
+    componentDidMount(){
+        this.props.getToken()
+    }
+    componentWillReceiveProps(nextProps){
+        if (nextProps.Store.user != this.props.Store.user){
+            console.log(this)
+        }
+    }
     render(){
         return (
             <ScrollView style={{flex:1, paddingLeft:15, paddingRight:15}}>
@@ -27,6 +35,6 @@ export default connect(
         Store: state
     }),
     dispatch =>({
-        pushToken:(token) => {dispatch({type:'@user.TOKEN', payload:token})}
+        pushToken: (token) => {dispatch({type:'TOKEN', payload:token})},
     })
 )(UserHoc(Home))

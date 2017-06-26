@@ -5,6 +5,8 @@ import global from '../../css/global';
 import c from '../../css/comein';
 import {Actions} from 'react-native-redux-router'
 import FloatingLabel from 'react-native-floating-labels'
+import UserHoc from '../../hoc/userHoc'
+import { url } from '../../config'
 
 const w = Dimensions.get('window');
 
@@ -13,18 +15,14 @@ class Registration extends Component{
         super(props)
         this.state = {
             error:'',
-            name:'',
-            login:'',
+            name:'Крутой',
+            login:'88006767676',
             cod:'',
-            password:''
+            password:'123456789'
         }
     }
-    change(key, event){
-        const items = this.state[key];
-        this.state[key] = event.target.value;
-        this.setState({
-            items,
-        })
+    registration(token, name, phone, password, cod){
+        this.props.getRegistration(token, name, phone, password, cod)
     }
     render(){
         return(
@@ -32,7 +30,7 @@ class Registration extends Component{
                 <View style={c.comeinCenter}>
                     <TextInput
                         style={c.formInputReg}
-                        onChange={this.change.bind(this, 'name')}
+                        onChangeText={(text) => this.setState({name:text})}
                         value={this.state.name}
                         placeholder={'Имя'}
                         placeholderTextColor={'#fff'}
@@ -40,7 +38,7 @@ class Registration extends Component{
                     />
                     <TextInput
                         style={c.formInputReg}
-                        onChange={this.change.bind(this, 'login')}
+                        onChangeText={(text) => this.setState({login:text})}
                         value={this.state.login}
                         placeholder={'Номер телефона'}
                         placeholderTextColor={'#fff'}
@@ -48,7 +46,7 @@ class Registration extends Component{
                     />
                     <TextInput
                         style={[c.formInputReg]}
-                        onChange={this.change.bind(this, 'password')}
+                        onChangeText={(text) => this.setState({password:text})}
                         value={this.state.password}
                         secureTextEntry={true}
                         placeholder={'Пароль'}
@@ -57,13 +55,13 @@ class Registration extends Component{
                     />
                     <TextInput
                         style={[c.formInputReg, {marginBottom:80}]}
-                        onChange={this.change.bind(this, 'cod')}
+                        onChangeText={(text) => this.setState({cod:text})}
                         value={this.state.cod}
                         placeholder={'Код приглашения'}
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
                     />
-                    <TouchableOpacity style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]} onPress={Actions.login} activeOpacity={1}>
+                    <TouchableOpacity style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]} onPress={this.registration.bind(this, this.props.Store.user.token, this.state.name, this.state.login, this.state.password, this.state.cod)} activeOpacity={1}>
                         <Text style={c.buttonText}>Зарегистрироваться</Text>
                     </TouchableOpacity>
                 </View>
@@ -73,5 +71,10 @@ class Registration extends Component{
 }
 export default connect(
     state => ({Store: state}),
-    dispatch =>({})
-)(Registration)
+    dispatch =>({
+        pushProfile: (item) => {dispatch({type:'PROFILE', payload:item})},
+        pushLoyalty: (item) => {dispatch({type:'LOYALITY', payload:item})},
+        initError: (text) => {dispatch({type:'ERROR', payload:text})},
+        removeError:() => {dispatch({type:'DROP_ERROR'})}
+    })
+)(UserHoc(Registration))

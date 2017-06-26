@@ -3,16 +3,14 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     wrap:{
         width:'90%',
+        position:'relative',
         paddingTop:10
     },
     line:{
         width:'100%',
         height:8,
-        backgroundColor:'#f89a91',
+        backgroundColor:'rgba(255,255,255,.2)',
         borderRadius:8,
-        borderWidth:2,
-        borderColor:'#f89a91',
-        borderStyle:'solid',
     },
     lineProgressWrap:{
         position:'absolute',
@@ -28,18 +26,6 @@ export default StyleSheet.create({
         zIndex:2,
         marginLeft:-2
     },
-    num:{
-        fontSize:6,
-        position:'relative',
-        color:'#ffe5e2',
-        width:16,
-        marginTop:-6,
-        height:16,
-        lineHeight:16,
-        textAlign:'center',
-        zIndex:3,
-        backgroundColor:'rgba(0,0,0,0)'
-    },
     lineProgress:{
         height:4,
         backgroundColor:'#e74b3b',
@@ -47,11 +33,21 @@ export default StyleSheet.create({
         position:'relative',
         zIndex:1
     },
+    lin:{
+        height:4,
+        backgroundColor:'#e74b3b',
+    },
     items:{
         width:'102%',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent:'space-between',
+        flexDirection:'row',
+        alignItems:'center',
     },
     item:{
         marginTop:-12,
+        height:45,
     },
     circle:{
         width:16,
@@ -59,23 +55,32 @@ export default StyleSheet.create({
         borderRadius:16,
         backgroundColor:'#e74b3b',
         borderWidth:2,
-        borderColor:'#f89a91',
+        borderColor:'rgba(255,255,255,.2)',
         borderStyle:'solid',
         position:'relative',
         zIndex:1,
     },
-    
+    num:{
+        fontSize:6,
+        position:'relative',
+        marginTop:-12,
+        color:'#ffe5e2',
+        width:18,
+        height:18,
+        textAlign:'center',
+        zIndex:3,
+        marginLeft:-1
+    },
     text:{
         fontSize:10,
         color:'#ffe5e2',
+        marginTop:17,
+        position:'absolute',
         lineHeight:10,
-        marginTop:18,
-        width:30,
-        zIndex:3,
-        backgroundColor:'rgba(0,0,0,0)',
-        position:'absolute'
+        width:40,
+        height:45
     },
-    active:{
-        
+    opacity:{
+        opacity:.6
     }
 })

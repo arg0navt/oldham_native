@@ -11,33 +11,31 @@ import ComeIn from '../../pages/ComeIn';
 import routes from '../../config/routes'
 
 const BarItem = ({progress, procent, status, active, length}) => (
-    <View className={active == 'active' ? [progressBar.item, progressBar.active] : progressBar.item} >
-        <View className={progressBar.circle}></View>
-        <View className={progressBar.num}>{progress}</View>
-        <Text className={active == 'active' ? [progressBar.text, progressBar.active] : progressBar.text}>
-            {status}<br/>{procent}%
-        </Text>
+    <View style={progressBar.item} >
+        <View style={active == 'active' ? progressBar.circle : [progressBar.circle, progressBar.opacity]}></View>
+        <Text style={active == 'active' ? progressBar.num : [progressBar.num, progressBar.opacity]}>{progress}</Text>
+        <Text style={active == 'active' ? progressBar.text : [progressBar.text, progressBar.activeText]}>{status}{"\n"}{procent}%</Text>
     </View>
 )
 
-const ProgressBar = (props, {num}) => {
-    if (num < 50){
-        num = num / 0.6 - 12
-    } else if (num == 50){
-        num = 66
-    } else if (num > 50){
-        num = 50 + num / 2
+const ProgressBar = (props, {num, loyalty}) => {
+    if (props.num < 50){
+        props.num = props.num / 0.6 - 12
+    } else if (props.num == 50){
+        props.num = 66
+    } else if (props.num > 50){
+        props.num = 50 + props.num / 2
     }
     return (
-    <View className={progressBar.wrap}>
-        <View className={progressBar.line}></View>
-        <View className={progressBar.lineProgressWrap}>
-            <View className={progressBar.lineProgress} style={{width:num + '%'}}></View>
+    <View style={progressBar.wrap}>
+        <View style={progressBar.line}></View>
+        <View style={progressBar.lineProgressWrap}>
+            <View style={[progressBar.lineProgress, {width:`${props.num}%`}]}></View>
         </View>
-        <View className={progressBar.items}>
-        {props.State.loyalty.settings.cards.map((item, index) =>{
-            return <BarItem key={index} progress={0} procent={5} status={'Basis'} active={num > 0 ? 'active' : ''} />
-        })}
+        <View style={progressBar.items}>
+            {props.loyalty.settings.cards.map((item, index) =>{
+                return <BarItem key={index} progress={item.activity} procent={item.percent} status={item.title_short} active={props.num > item.activity ? 'active' : ''} />
+            })}
         </View>
     </View>
 )}
@@ -46,7 +44,7 @@ class Card extends Component{
     constructor(props){
         super(props)
         this.state = {
-            num: 74
+            num: 0
         }
     }
     render(){
@@ -59,19 +57,34 @@ class Card extends Component{
                     <View style={[global.row, card.cardTop]}>
                     {Object.keys(loyalty).length != 0 ? (
                         <View style={card.cardLogo}>
+                            {Object.keys(loyalty).length != 0 ? (
                             <View>
-                                <Image source={require('./img/icon/logo.png')} style={card.cardLogoImg} ></Image>
-                                <Text style={card.cardlogoNum}>Gold Card 15%</Text>
+                                {loyalty.user_activity > 0 && loyalty.user_activity < 25  ? (
+                                    <Image style={card.cardProcent} source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/percent_${loyalty.settings.cards[0].percent}.png`}} />
+                                ) :
+                                loyalty.user_activity >= 25 && loyalty.user_activity < 50 ? (
+                                    <Image style={card.cardProcent} source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/percent_${loyalty.settings.cards[1].percent}.png`}} />
+                                ) :
+                                loyalty.user_activity >= 50 ? (
+                                    <Image style={card.cardProcent} source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/percent_${loyalty.settings.cards[2].percent}.png`}} />
+                                ) :
+                                loyalty.user_activity == 100 ? (
+                                    <Image style={card.cardProcent} source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/percent_${loyalty.settings.cards[3].percent}.png`}} />
+                                ) : ''}
+                                <Text style={card.procentText}>
+                                    {loyalty.user_card.title} {loyalty.user_card.percent}%
+                                </Text>
                             </View>
+                            ) : (<View></View>)}
                         </View>
                     ) : (<View></View>)}
                     {Object.keys(loyalty).length != 0 ? (
                         <View style={card.cardInfo}>
-                            <View style={[global.row, card.cardName]}><Text style={card.cardNameText}>Евгений Новиков</Text><Image source={require('./img/icon/up.png')} style={{width:16, height:16}}></Image></View>
+                            <View style={[global.row, card.cardName]}><Text style={card.cardNameText}>{user.profile.user_name}</Text><Image source={require('./img/icon/up.png')} style={{width:16, height:16}}></Image></View>
                             <Text style={card.cardScore}>
-                                активность <Text style={card.cardScoreActive}>{this.state.num}</Text> из 100
+                                активность <Text style={card.cardScoreActive}>{loyalty.user_activity}</Text> из 100
                             </Text>
-                            <ProgressBar num={this.state.num} />
+                            <ProgressBar num={Number(loyalty.user_activity)} loyalty={loyalty} />
                         </View>
                     ) : (
                         <View style={card.cardInfo}>
@@ -86,7 +99,7 @@ class Card extends Component{
                     <View style={[global.row, card.cardBottom]}>
                         <View style={card.cardBottomLeft}>
                             <Text style={card.cardBottomNum}>
-                                кол-во баллов{"\n"}<Text style={card.cardBottomNumAction}>174</Text>
+                                кол-во баллов{"\n"}<Text style={card.cardBottomNumAction}>{loyalty.user_points}</Text>
                             </Text>
                         </View>
                         <View style={card.cardBottomRight}>
@@ -102,22 +115,22 @@ class Card extends Component{
                         </View>
                     </View>
                     ) : (<View></View>)}
+                    </View>
                 {loyalty.user_activity > 0 && loyalty.user_activity < 25  ? (
-                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_${loyalty.settings.cards[0].percent}.png`}} style={{flex:1, height: undefined, width: undefined}} resizeMode="stretch" />
+                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_${loyalty.settings.cards[0].percent}.png`}} style={{position:'absolute', top:0, left:0,zIndex:1, height: '100%', width: '100%'}} resizeMode="stretch" />
                 ) :
                 loyalty.user_activity >= 25 && loyalty.user_activity < 50 ? (
-                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_${loyalty.settings.cards[1].percent}.png`}} style={{flex:1, height: undefined, width: undefined}} resizeMode="stretch" />
+                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_${loyalty.settings.cards[1].percent}.png`}} style={{position:'absolute', top:0, left:0,zIndex:1, height: '100%', width: '100%'}} resizeMode="stretch" />
                 ) :
                 loyalty.user_activity >= 50 ? (
-                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_${loyalty.settings.cards[2].percent}.png`}} style={{flex:1, height: undefined, width: undefined}} resizeMode="stretch" />
+                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_${loyalty.settings.cards[2].percent}.png`}} style={{position:'absolute', top:0, left:0,zIndex:1, height: '100%', width: '100%'}} resizeMode="stretch" />
                 ) :
                 loyalty.user_activity == 100 ? (
-                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_${loyalty.settings.cards[3].percent}.png`}} style={{flex:1, height: undefined, width: undefined}} resizeMode="stretch" />
+                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_${loyalty.settings.cards[3].percent}.png`}} style={{position:'absolute', top:0, left:0,zIndex:1, height: '100%', width: '100%'}} resizeMode="stretch" />
                 ) : <View></View>}
                 {Object.keys(loyalty).length == 0 ? (
                     <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/main_card/bg_card_no_auth.png`}} style={{position:'absolute', top:0, left:0,zIndex:1, height: '100%', width: '100%'}} resizeMode="stretch" />
                 ) : <View></View>}
-            </View>
             </View>
         )
     }

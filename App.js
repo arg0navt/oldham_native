@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Image, Navigator, Dimensions, Text } from 'react-native';
+import { AppRegistry, View, Image, Navigator, Dimensions, Text, ScrollView, StatusBar } from 'react-native';
 import {createStore,combineReducers, applyMiddleware} from 'redux';
 import { Provider, connect } from 'react-redux'
 import Header from './ui/header';
@@ -34,10 +34,10 @@ class App extends React.Component {
               initialRoute={routes[0]}
               renderScene={(route, navigator) => (
                 <View style={{flex:1}}>
+                  <StatusBar translucent={true} />
                   <Header route={route} navigator={navigator} openPanel={this.openControlPanel} />
-                  <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1}}>
-                    <route.component {...route.passProps} navigator={navigator} route={route} />
-                  </Image>
+                  <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1, position:'absolute', top:0, left:0, right:0, bottom:0}} />
+                  <route.component {...route.passProps} navigator={navigator} route={route} />
                 </View>
               )}      
             />

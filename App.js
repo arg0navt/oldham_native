@@ -18,9 +18,6 @@ class App extends React.Component {
   openControlPanel = () => {
       this._drawer.open()
   }
-  componentDidMount(){
-    console.log(this)
-  }
   render() {
     return (
       <View style={{flex:1}}>

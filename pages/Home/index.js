@@ -14,11 +14,6 @@ class Home extends Component{
     componentDidMount(){
         this.props.getToken()
     }
-    componentWillReceiveProps(nextProps){
-        if (nextProps.Store.user != this.props.Store.user){
-            console.log(this)
-        }
-    }
     render(){
         return (
             <ScrollView style={{flex:1, paddingLeft:15, paddingRight:15}}>

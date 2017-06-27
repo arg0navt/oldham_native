@@ -20,7 +20,7 @@ class Header extends Component{
                 <View style={[global.row, global.noPadding]}>
                     <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={[global.row, {height: w.height, width: w.width, paddingTop:42, paddingLeft:15, paddingRight:15, alignItems:'flex-start', marginTop:-10}]} resizeMode="stretch">
                         <View style={[global.col4, global.left]}>
-                            {route.index == 0 ? (
+                            {route.id == 'Home' ? (
                                 <TouchableOpacity onPress={this.openNavigation.bind(this)}>
                                     <View style={styleHeader.buttonNavWr}><Image style={styleHeader.buttonNav} source={require("./img/icon/nav.png")} ></Image></View>
                                 </TouchableOpacity>

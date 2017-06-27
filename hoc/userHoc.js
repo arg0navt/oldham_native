@@ -23,7 +23,6 @@ const UserHoc = (ComposedComponent) => {
             .catch((error) => {this.error(error)})
         }
         getLogin(token, login, password){
-            console.log(this)
             axios.get(Api('Auth','auth',`"token":"${token}","login":"${login}","password":"${password}"`))
             .then((response)=>{
                 if (response.data[0].result != undefined){

@@ -6,6 +6,7 @@ export default StyleSheet.create({
         paddingLeft:15,
         paddingRight:15,
         width:'100%',
+        minHeight:'100%',
         flex:1,
         position:'relative',
     },

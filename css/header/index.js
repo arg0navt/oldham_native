@@ -4,12 +4,12 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
     header:{
         width:'100%',
-        height:70,
-        paddingTop:25,
+        height:60,
+        paddingTop:0,
         backgroundColor:'#111111',
         position:'absolute',
         zIndex:10,
-        overflow:'visible',
+        overflow:'hidden',
     },
     buttonNav:{
         width:17,

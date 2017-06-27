@@ -33,7 +33,7 @@ class App extends React.Component {
               initialRouteStack={routes}
               initialRoute={routes[0]}
               renderScene={(route, navigator) => (
-                <View style={{height: w.height}}>
+                <View style={{flex:1}}>
                   <Header route={route} navigator={navigator} openPanel={this.openControlPanel} />
                   <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1}}>
                     <route.component {...route.passProps} navigator={navigator} route={route} />

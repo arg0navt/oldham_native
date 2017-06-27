@@ -28,8 +28,8 @@ const UserHoc = (ComposedComponent) => {
             .then((response)=>{
                 if (response.data[0].result != undefined){
                     this.pushProfile(response.data[0].result.user)
-                    this.navigator.jumpTo(routes[0])
                     this.getLoyality(response.data[0].result.user.user_token) 
+                    this.navigator.jumpTo(routes[0])
                 } else {
                     this.error(response.data[0].error.message)
                 }

@@ -26,7 +26,7 @@ class Login extends Component{
         const {token} = this.props.Store.user
         return(
             <ScrollView style={global.content}>
-                <View style={[{height:w.height - 75}, c.wrap]}>
+                <View style={c.wrap}>
                 <View style={c.comeinCenter}>
                     <Text style={c.comeinTextLogin}>Для входа на сайт введите ваш номер телефона и пароль</Text>
                     <TextInput
@@ -34,6 +34,7 @@ class Login extends Component{
                         onChangeText={(text) => this.setState({login:text})}
                         value={this.state.login}
                         placeholder={'Логин'}
+                        enablesReturnKeyAutomatically={true}
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
                     />
@@ -42,6 +43,7 @@ class Login extends Component{
                         onChangeText={(text) => this.setState({password:text})}
                         value={this.state.password}
                         secureTextEntry={true}
+                        enablesReturnKeyAutomatically={true}
                         placeholder={'Пароль'}
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}

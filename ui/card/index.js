@@ -89,7 +89,7 @@ class Card extends Component{
                     ) : (
                         <View style={card.cardInfo}>
                             <Text style={card.noUserText}>Заполните свой профиль{"\n"}для получения BASIS CARD 5%</Text>
-                            <TouchableOpacity onPress={() => this.props.nav.jumpTo(routes[1])} activeOpacity={1} style={card.noUserButton}>
+                            <TouchableOpacity onPress={() => this.props.nav.push({id: 'ComeIn',name: 'ComeIn'})} activeOpacity={1} style={card.noUserButton}>
                                 <Text style={card.noUserButtonText}>войти в свой аккаунт</Text>
                             </TouchableOpacity>
                         </View>

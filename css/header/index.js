@@ -17,7 +17,10 @@ export default StyleSheet.create({
         display:'flex',
     },
     buttonNavWr:{
-        width:44
+        width:44,
+        padding:30,
+        marginLeft:-30,
+        marginTop:-30
     },
     buttonShopWr:{
         width:44,

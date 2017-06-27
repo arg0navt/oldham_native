@@ -13,10 +13,10 @@ class ComeIn extends Component{
                 <View style={c.comeinCenter}>
                 <Text style={c.comeinText}>Зарегистрируйтесь, чтобы получить больше баллов и совершать заказы быстрее.</Text>
                 <View style={c.comeinButtons}>
-                    <TouchableOpacity style={[c.button, c.comeinButtonLogin]} onPress={() => this.props.navigator.jumpTo(routes[2])} activeOpacity={1}>
+                    <TouchableOpacity style={[c.button, c.comeinButtonLogin]} onPress={() => this.props.navigator.push({id: 'Login',name: 'Login'})} activeOpacity={1}>
                         <Text style={c.buttonText}>Войти</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={[c.button, c.comeinButtonRegistration]} onPress={() => this.props.navigator.jumpTo(routes[3])} activeOpacity={1}>
+                    <TouchableOpacity style={[c.button, c.comeinButtonRegistration]} onPress={() => this.props.navigator.push({id: 'Registartions',name: 'Registrations'})} activeOpacity={1}>
                         <Text style={c.buttonText}>Регистрация</Text>
                     </TouchableOpacity>
                 </View>

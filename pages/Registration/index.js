@@ -3,8 +3,6 @@ import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, StatusBar, Butt
 import { Provider, connect } from 'react-redux'
 import global from '../../css/global';
 import c from '../../css/comein';
-import {Actions} from 'react-native-redux-router'
-import FloatingLabel from 'react-native-floating-labels'
 import UserHoc from '../../hoc/userHoc'
 import { url } from '../../config'
 
@@ -14,20 +12,20 @@ class Registration extends Component{
     constructor(props){
         super(props)
         this.state = {
-            error:'',
-            name:'Крутой',
-            login:'88006767676',
+            name:'',
+            login:'',
             cod:'',
-            password:'123456789'
+            password:''
         }
     }
     registration(token, name, phone, password, cod){
         this.props.getRegistration(token, name, phone, password, cod)
     }
     render(){
+        const {token} = this.props.Store.user
         return(
             <ScrollView style={global.content}>
-            <View style={c.wrap}>
+                <View style={c.wrap}>
                 <View style={c.comeinCenter}>
                     <TextInput
                         style={c.formInputReg}
@@ -66,7 +64,7 @@ class Registration extends Component{
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
                     />
-                    <TouchableOpacity style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]}  activeOpacity={1}>
+                    <TouchableOpacity onPress={this.registration.bind(this, token, this.state.name, this.state.login, this.state.password, this.state.cod)} style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]}  activeOpacity={1}>
                         <Text style={c.buttonText}>Зарегистрироваться</Text>
                     </TouchableOpacity>
                 </View>

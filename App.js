@@ -32,7 +32,7 @@ class App extends React.Component {
               renderScene={(route, navigator) => (
                 <View style={{flex:1}}>
                   <StatusBar translucent={true} />
-                  <Header route={route} navigator={navigator} openPanel={this.openControlPanel} />
+                  {route.id != 'EndRegistration' ? <Header route={route} navigator={navigator} openPanel={this.openControlPanel} /> : <View></View>}
                   <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1, position:'absolute', top:0, left:0, right:0, bottom:0}} />
                   <RenderScene route={route} navigator={navigator}/>
                 </View>

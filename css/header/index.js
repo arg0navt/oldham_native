@@ -11,6 +11,10 @@ export default StyleSheet.create({
         zIndex:10,
         overflow:'hidden',
     },
+    logoWr:{
+        width:100,
+        height:50
+    },
     buttonNav:{
         width:17,
         height:13,

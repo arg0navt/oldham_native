@@ -18,7 +18,7 @@ class Header extends Component{
             <View style={{height:60}}>
             <View style={styleHeader.header}>
                 <View style={[global.row, global.noPadding]}>
-                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={[global.row, {height: w.height, width: w.width, paddingTop:42, paddingLeft:15, paddingRight:15, alignItems:'flex-start', marginTop:-10}]} resizeMode="stretch">
+                    <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={[global.row, {height: w.height, width: w.width, paddingTop:24, paddingLeft:15, paddingRight:15, alignItems:'flex-start', marginTop:7}]} resizeMode="stretch">
                         <View style={[global.col4, global.left]}>
                             {route.id == 'Home' ? (
                                 <TouchableOpacity onPress={this.openNavigation.bind(this)}>
@@ -30,9 +30,11 @@ class Header extends Component{
                                 </TouchableOpacity>
                             )}
                         </View>
-                        <View style={[global.col4, global.center]}>
-                            <View style={styleHeader.logoWr}></View>
-                        </View>
+                        {route.id != 'Home' ? (
+                        <TouchableOpacity style={[global.col4, styleHeader.logoWr]} onPress={() => navigator.push({id: 'Home',name: 'Home'})}></TouchableOpacity>
+                        ) : (
+                            <View></View>
+                        )}
                         <View style={[global.col4, global.right]}>
                             <View style={styleHeader.buttonShopWr}><Image style={styleHeader.buttonShopImage} source={require("./img/icon/shop.png")} ><View style={styleHeader.numShop}></View></Image></View>
                         </View>

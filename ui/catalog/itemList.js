@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView } from 'react-native';
+import { Text, View, Dimensions, ScrollView } from 'react-native';
 import Item from '../item';
 import c from '../../css/catalog';
 
-export default ItemList = (list) => (
-    <View style={c.categoryWr}>
-        {list.map((item, index)=> <Item key={index} item={item} />)}
-    </View>
+const w = Dimensions.get('window');
+
+export default ItemList = (list) => {
+    return (
+    <ScrollView style={[c.categoryWr, {width:'100%',height:w.height - 102}]}>
+        {list.list.map((item, index) => <Item key={index} item={item} />)}
+    </ScrollView>
 )
+}

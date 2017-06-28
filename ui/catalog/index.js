@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
 import global from '../../css/global';
 import catalog from '../../css/catalog'
-import CataloListHoc from '../../hoc/catalogListHoc'
+import CatalogHoc from '../../hoc/catalogListHoc'
 import { connect } from 'react-redux' 
 import { transliterate } from '../../config'
 
@@ -22,7 +22,7 @@ class CatalogList extends Component{
         return(
             <View style={[global.row, catalog.catalogBlock]}>
                 <View style={catalog.catalogRow}>
-                    {Store.category.categoryList != 0 ? 
+                    {Store.category.categoryList.length != 0 ? 
                         Store.category.categoryList.map((item, index) => <CatalogItem icon={`http://dev.kaerus.ru/uploads/${item.catalog_image_icon}`} key={index} img={`http://dev.kaerus.ru/uploads/${item.catalog_image_340x240}`} text={item.category_name} link={transliterate(item.category_name)} />)
                     : (<View></View>)}
                 </View>
@@ -38,4 +38,4 @@ export default connect(
     dispatch =>({
         pushCategory:(item) => {dispatch({type:'CATEGORY_LIST', payload:item})}
     })
-)(CataloListHoc(CatalogList))
+)(CatalogHoc(CatalogList))

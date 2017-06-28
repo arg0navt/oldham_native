@@ -5,9 +5,10 @@ import ComeIn from '../pages/ComeIn';
 import Login from '../pages/Login';
 import Registration from '../pages/Registration';
 import EndRegistration from '../pages/EndRegistration';
+import Catalog from '../pages/Catalog';
 
 export default routes = [
-    {id: 'Home', name: 'Home', component: Home, index: 0},
+    {id: 'Catalog', name: 'Catalog', component: Catalog, index: 0},
     {id: 'ComeIn', name: 'ComeIn', component: ComeIn, index: 1},
     {id: 'Login', name: 'Login', component: Login, index: 2},
     {id: 'Registration', name: 'Registration', component: Registration, index: 3},
@@ -20,6 +21,7 @@ export const RenderScene = ({route, navigator}) => (
     route.id === 'Login' ? <Login navigator={navigator} /> :
     route.id === 'Registration' ? <Registration navigator={navigator} /> : 
     route.id === 'EndRegistration' ? <EndRegistration navigator={navigator} /> :
+    route.id === 'Catalog' ? <Catalog navigator={navigator} /> :
     <View></View>}
     </ScrollView>
 )

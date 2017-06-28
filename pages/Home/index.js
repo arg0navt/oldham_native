@@ -14,6 +14,9 @@ class Home extends Component{
     componentDidMount(){
         this.props.getToken()
     }
+    componentWillReceiveProps(nextProps){
+        nextProps.Store != this.props.Store ? console.log(nextProps) : false
+    }
     render(){
         return (
             <ScrollView style={{flex:1, paddingLeft:15, paddingRight:15}}>

@@ -2,19 +2,26 @@ import React, { Component } from 'react';
 import axios  from 'axios';
 import { Api } from '../config'
 
-const CataloListHoc = (ComposedComponent) => {
-    class CataloListHoc extends Component{
+const CatalogHoc = (ComposedComponent) => {
+    class CatalogHoc extends Component{
         getType(){
             axios.get(Api('Pwa','getCategories'))
             .then((response) => {
                 this.pushCategory(response.data[0].result)
             })
-            .catch((error) => {console.log(error)})
+            .catch((error) => {})
+        }
+        getItems(id){
+            axios.get(Api('Pwa','getItems',`%22categoryId%22:${id}`))
+            .then((response) => {
+                this.pushItems(response.data[0].result)
+            })
+            .catch((error) => {})
         }
         render() {
-            return <ComposedComponent getType={this.getType} {...this.props} {...this.state} />;
+            return <ComposedComponent getItems={this.getItems} getType={this.getType} {...this.props} {...this.state} />;
         }
     }
-    return CataloListHoc
+    return CatalogHoc
 }
-export default CataloListHoc;
+export default CatalogHoc;

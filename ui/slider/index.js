@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, Dimensions } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
 import slider from '../../css/slider'
 import global from '../../css/global';
 import Swiper from 'react-native-swiper';
@@ -20,18 +20,18 @@ var styles = StyleSheet.create({
   }
 })
 
-const Item = ({img, text, id}) => (
+const Item = ({nav, img, text, id}) => (
     <View style={styles.slide}>
-        <Image source={{uri: img}} style={slider.blockImg} resizeMode="stretch" />
+        <TouchableOpacity style={{width:'100%', height:'100%', position:'relative', top:0, bottom:0, left:0, right:0, zIndex:1}} onPress={()=> nav.push({id: 'SharesDetail',name: 'SharesDetail', sharesId:id})}>
+            <Image source={{uri: img}} style={slider.blockImg} resizeMode="stretch" />
+        </TouchableOpacity>
         <View style={slider.blockText}>
             <View style={[global.row, slider.center]}>
                 <View style={slider.leftText}>
                     <Text style={slider.sliderText}>{text}</Text>
                 </View>
                 <View style={slider.rightText}>
-                    <View style={global.row}>
-                        <Text style={slider.sliderLink}>Все акции</Text><Image source={require('./img/icon/up.png')} style={{width:16, height:16}}></Image>
-                    </View>
+                    <TouchableOpacity style={global.row} onPress={()=> nav.push({id: 'Shares',name: 'Shares'})}><Text style={slider.sliderLink}>Все акции</Text><Image source={require('./img/icon/up.png')} style={{width:16, height:16}}></Image></TouchableOpacity>
                 </View>
             </View>
         </View>
@@ -49,7 +49,7 @@ class Slider extends Component{
             <View style={styles.wrapper}>
                 {Store.shares.sharesList != 0 ? (
                     <Swiper>
-                        {Store.shares.sharesList.map((item, index) => <Item key={index} img={`http://dev.kaerus.ru/uploads/${item.action_image_s}`} id={item.action_id} text={`${item.action_title}`} />)}
+                        {Store.shares.sharesList.map((item, index) => <Item nav={this.props.nav} key={index} img={`http://dev.kaerus.ru/uploads/${item.action_image_s}`} id={item.action_id} text={`${item.action_title}`} />)}
                     </Swiper>
                 ) : (<View></View>)}
             </View>

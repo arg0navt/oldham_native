@@ -20,7 +20,12 @@ export default StyleSheet.create({
         zIndex:2,
         flex:1,
         height:undefined,
-        width: undefined
+        width: undefined,
+        position:'absolute',
+        top:0,
+        left:0,
+        right:0,
+        bottom:0
     },
     blockText:{
         position:'relative',

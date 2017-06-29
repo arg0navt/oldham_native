@@ -11,8 +11,15 @@ const SharesHoc = (ComposedComponent) => {
             })
             .catch((error) => {})
         }
+        getDetail(id){
+            axios.get(Api('Actions','get', `%22action_id%22:%22${id}%22`))
+            .then((response) => {
+                this.pushSharesDetail(response.data[0].result)
+            })
+            .catch((error) => {})
+        }
         render() {
-            return <ComposedComponent getList={this.getList} {...this.props} {...this.state} />;
+            return <ComposedComponent getDetail={this.getDetail} getList={this.getList} {...this.props} {...this.state} />;
         }
     }
     return SharesHoc

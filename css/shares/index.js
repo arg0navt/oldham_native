@@ -1,0 +1,76 @@
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+    item:{
+        width:'100%',
+        height:170,
+        overflow:'hidden',
+        position:'relative',
+        borderRadius:10,
+        marginBottom:15
+    },
+    itemPich:{
+        position:'relative',
+        width:'100%',
+        height:'100%',
+    },
+    itemText:{
+        width:'100%',
+        height:45,
+        position:'absolute',
+        bottom:0,
+        left:0,
+        zIndex:2,
+        backgroundColor:'rgba(0,0,0,.7)',
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'space-between',
+        alignItems:'center',
+        flexDirection:'row'
+    },
+    titleLink:{
+        paddingLeft:17,
+        paddingRight:17,
+        color:'#fff',
+        fontSize:13,
+        lineHeight:13
+    },
+    detailPich:{
+        width:'100%',
+        height:225,
+        position:'relative'
+    },
+    detailPichImage:{
+        position:'absolute',
+        top:0,
+        bottom:0,
+        left:0,
+        right:0
+    },
+    dataPanel:{
+        width:'100%',
+        height:110,
+        overflow:'hidden',
+        position:'relative',
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'flex-start',
+        alignItems:'center',
+        flexDirection:'row'
+    },
+    detailTitle:{
+        color:'#fff',
+        fontSize:24,
+        width:'50%',
+        lineHeight:24,
+        padding:30
+    },
+    detailText:{
+        padding:30
+    },
+    p:{
+        color:'#fff',
+        fontSize:14,
+        marginBottom:20
+    }
+})

@@ -17,7 +17,7 @@ class Home extends Component{
     render(){
         return (
             <ScrollView style={{flex:1, paddingLeft:15, paddingRight:15}}>
-                <Slider />
+                <Slider nav={this.props.navigator} />
                 <Card nav={this.props.navigator} />
                 <Catalog nav={this.props.navigator} />
             </ScrollView>

@@ -4,10 +4,11 @@ export default StyleSheet.create({
     itemCol:{
         maxWidth:'50%',
         width:'50%',
+        height:120,
         padding:2.5,
-    },
-    blockImage:{
-        width:'100%'
+        position:'relative',
+        backgroundColor:'rgba(0,0,0,0)',
+        marginBottom:15
     },
     catalogRow:{
         width:'100%',
@@ -21,9 +22,6 @@ export default StyleSheet.create({
     itemBlock:{
         width:'100%',
         height:120,
-        borderRadius:5,
-        overflow:'hidden',
-        position:'relative'
     },
     catalogBlock:{
         paddingTop:15,

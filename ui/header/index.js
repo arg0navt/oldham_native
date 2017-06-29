@@ -36,7 +36,13 @@ class Header extends Component{
                             <View></View>
                         )}
                         <View style={[global.col4, global.right]}>
-                            <View style={styleHeader.buttonShopWr}><Image style={styleHeader.buttonShopImage} source={require("./img/icon/shop.png")} ><View style={styleHeader.numShop}></View></Image></View>
+                            <TouchableOpacity onPress={() => navigator.push({id: 'Basket',name: 'Basket'})} style={styleHeader.buttonShopWr}>
+                                <Image style={styleHeader.buttonShopImage} source={require("./img/icon/shop.png")}>
+                                    {this.props.Store.basket.length != 0 ? (
+                                        <View style={styleHeader.numShop}></View>
+                                    ) : (<View></View>)}
+                                </Image>
+                            </TouchableOpacity>
                         </View>
                     </Image>
                 </View>

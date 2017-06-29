@@ -7,11 +7,9 @@ import { connect } from 'react-redux'
 import { transliterate } from '../../config'
 
 const CatalogItem = ({id, img, icon, text, link, width, go}) => (
-    <View style={catalog.itemCol}>
-        <TouchableOpacity onPress={() => go.push({id: 'Catalog',name: 'Catalog', idCategory:`${id}`})} activeOpacity={1}>
-            <Image source={{uri: img}} style={[catalog.itemBlock, catalog.blockImage]} />
-        </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={catalog.itemCol} onPress={() => go.push({id: 'Catalog',name: 'Catalog', idCategory:`${id}`})}>
+        <Image source={{uri: img}} style={catalog.itemBlock} />
+    </TouchableOpacity>
 )
 
 class CatalogList extends Component{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Dimensions } from 'react-native';
+import { Text, View, ScrollView, Dimensions, ProgressBar } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import MaskTabBar from 'react-native-scrollable-tab-view-mask-bar'
 import { connect } from 'react-redux'
@@ -8,6 +8,8 @@ import ItemList from '../../ui/catalog/itemList'
 import global from '../../css/global';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures'
 import c from '../../css/catalog';
+
+const w = Dimensions.get('window');
 
 class Catalog extends Component{
     constructor(props){
@@ -18,9 +20,13 @@ class Catalog extends Component{
         }
     }
     componentDidMount(){
-        this.props.getType()
-        this.props.getItems(this.state.n)
-        this.setState({l:this.props.Store.category.categoryList.length})
+        this.setState({
+            n:Number(this.props.route.idCategory)
+        })
+        setTimeout(()=>{
+            this.props.getType()
+            this.setState({l:this.props.Store.category.categoryList.length})
+        })
     }
     componentWillReceiveProps(nextProps){
         if(nextProps.Store.category.categoryList != this.props.Store.category.categoryList){
@@ -28,12 +34,25 @@ class Catalog extends Component{
         }
     }
     onSwipeLeft() {
-        this.state.n < this.state.l ? this.setState({n:this.state.n+1}) : false
-        this.props.getItems(this.state.n)
+        let n = this.state.n + 1
+        let tabId = this.state.n
+        n <= this.state.l ? this.setState({n:n}) : false
+        setTimeout(() => {
+            this.props.getItems(this.state.n)
+            this.tabView.goToPage(tabId)
+        })
     }
-    onSwipeLRight() {
-        this.state.n == 1 ? this.setState({n:this.state.n-1}) : false
-        this.props.getItems(this.state.n)
+    onSwipeRight() {
+        let n = this.state.n - 1
+        let tabId = n - 1
+        n > 0 ? this.setState({n:n}) : false
+        setTimeout(() => {
+            this.props.getItems(this.state.n)
+            this.tabView.goToPage(tabId)
+        })
+    }
+    handleChangeTab(ev){
+        this.props.getItems(Number(ev.i) + 1)
     }
     render(){
         const { categoryList } = this.props.Store.category
@@ -42,7 +61,11 @@ class Catalog extends Component{
             <View style={{flex:1}}>
                 <View style={{height:45}}>
                 {categoryList.length != 0 ? (
-                    <ScrollableTabView initialPage={0} renderTabBar={() => <MaskTabBar someProp={'here'} showMask={true} maskMode='light' />}>
+                    <ScrollableTabView 
+                        ref={(tabView) => { this.tabView = tabView }} 
+                        initialPage={this.state.n - 1} renderTabBar={() => <MaskTabBar someProp={'here'} showMask={true} maskMode='light' />}
+                        onChangeTab={this.handleChangeTab.bind(this)}
+                    >
                         {categoryList.map((item, index) => (
                             <View key={index} tabLabel={item.category_name}></View>
                         ))}

@@ -9,7 +9,7 @@ const SharesHoc = (ComposedComponent) => {
             .then((response) => {
                 this.pushShares(response.data[0].result)
             })
-            .catch((error) => {console.log(error)})
+            .catch((error) => {})
         }
         render() {
             return <ComposedComponent getList={this.getList} {...this.props} {...this.state} />;

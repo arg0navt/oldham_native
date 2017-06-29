@@ -8,20 +8,21 @@ import EndRegistration from '../pages/EndRegistration';
 import Catalog from '../pages/Catalog';
 
 export default routes = [
-    {id: 'Catalog', name: 'Catalog', component: Catalog, index: 0},
+    {id: 'Home', name: 'Home', component: Home, index: 0},
     {id: 'ComeIn', name: 'ComeIn', component: ComeIn, index: 1},
     {id: 'Login', name: 'Login', component: Login, index: 2},
     {id: 'Registration', name: 'Registration', component: Registration, index: 3},
     {id: 'EndRegistration', name: 'EndRegistration', component: EndRegistration, index: 4},
+    {id: 'Catalog', name: 'Catalog', component: Catalog, index: 5, categoryId:0 },
 ];
 export const RenderScene = ({route, navigator}) => (
     <ScrollView style={{flex:1}}>
-    {route.id === 'Home' ? <Home navigator={navigator} /> :
-    route.id === 'ComeIn' ? <ComeIn navigator={navigator} /> :
-    route.id === 'Login' ? <Login navigator={navigator} /> :
-    route.id === 'Registration' ? <Registration navigator={navigator} /> : 
-    route.id === 'EndRegistration' ? <EndRegistration navigator={navigator} /> :
-    route.id === 'Catalog' ? <Catalog navigator={navigator} /> :
+    {route.id === 'Home' ? <Home navigator={navigator} route={route} /> :
+    route.id === 'ComeIn' ? <ComeIn navigator={navigator} route={route} /> :
+    route.id === 'Login' ? <Login navigator={navigator} route={route} /> :
+    route.id === 'Registration' ? <Registration navigator={navigator} route={route} /> : 
+    route.id === 'EndRegistration' ? <EndRegistration navigator={navigator} route={route} /> :
+    route.id === 'Catalog' ? <Catalog navigator={navigator} route={route} /> :
     <View></View>}
     </ScrollView>
 )

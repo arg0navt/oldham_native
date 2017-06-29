@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Image, ScrollView } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Image, ScrollView, TouchableOpacity } from 'react-native';
 import global from '../../css/global';
 import catalog from '../../css/catalog'
 import CatalogHoc from '../../hoc/catalogListHoc'
 import { connect } from 'react-redux' 
 import { transliterate } from '../../config'
 
-const CatalogItem = ({img, icon, text, link, width}) => (
+const CatalogItem = ({id, img, icon, text, link, width, go}) => (
     <View style={catalog.itemCol}>
-        <Image source={{uri: img}} style={[catalog.itemBlock, catalog.blockImage]} />
+        <TouchableOpacity onPress={() => go.push({id: 'Catalog',name: 'Catalog', idCategory:`${id}`})} activeOpacity={1}>
+            <Image source={{uri: img}} style={[catalog.itemBlock, catalog.blockImage]} />
+        </TouchableOpacity>
     </View>
 )
 
@@ -23,7 +25,7 @@ class CatalogList extends Component{
             <View style={[global.row, catalog.catalogBlock]}>
                 <View style={catalog.catalogRow}>
                     {Store.category.categoryList.length != 0 ? 
-                        Store.category.categoryList.map((item, index) => <CatalogItem icon={`http://dev.kaerus.ru/uploads/${item.catalog_image_icon}`} key={index} img={`http://dev.kaerus.ru/uploads/${item.catalog_image_340x240}`} text={item.category_name} link={transliterate(item.category_name)} />)
+                        Store.category.categoryList.map((item, index) => <CatalogItem id={item.category_id} go={this.props.nav} icon={`http://dev.kaerus.ru/uploads/${item.catalog_image_icon}`} key={index} img={`http://dev.kaerus.ru/uploads/${item.catalog_image_340x240}`} text={item.category_name} link={transliterate(item.category_name)} />)
                     : (<View></View>)}
                 </View>
             </View>

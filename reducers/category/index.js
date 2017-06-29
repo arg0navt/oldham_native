@@ -4,7 +4,7 @@ export default function category(state = {categoryList:[], categoryActive:[], de
     } else if (action.type === 'PUSH_CATEGORY_ITEMS'){
         return {...state, categoryActive: action.payload}
     } else if (action.type === 'PUSH_DETAIL'){
-        return {...state, detail: action.payload}
+        return {...state, detail: action.payload[0]}
     }
     return state
 }

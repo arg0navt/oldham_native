@@ -21,14 +21,14 @@ export default routes = [
 ];
 export const RenderScene = ({route, navigator}) => (
     <ScrollView style={{flex:1}}>
-    {route.id === 'Home' ? <Home navigator={navigator} route={route} /> :
-    route.id === 'ComeIn' ? <ComeIn navigator={navigator} route={route} /> :
-    route.id === 'Login' ? <Login navigator={navigator} route={route} /> :
-    route.id === 'Registration' ? <Registration navigator={navigator} route={route} /> : 
-    route.id === 'EndRegistration' ? <EndRegistration navigator={navigator} route={route} /> :
-    route.id === 'Catalog' ? <Catalog navigator={navigator} route={route} /> :
-    route.id === 'Basket' ? <Basket navigator={navigator} route={route} /> :
-    route.id === 'Detail' ? <Detail navigator={navigator} route={route} /> :
-    <View></View>}
+        {route.id === 'Home' ? <Home navigator={navigator} route={route} /> :
+        route.id === 'ComeIn' ? <ComeIn navigator={navigator} route={route} /> :
+        route.id === 'Login' ? <Login navigator={navigator} route={route} /> :
+        route.id === 'Registration' ? <Registration navigator={navigator} route={route} /> : 
+        route.id === 'EndRegistration' ? <EndRegistration navigator={navigator} route={route} /> :
+        route.id === 'Catalog' ? <Catalog navigator={navigator} route={route} /> :
+        route.id === 'Basket' ? <Basket navigator={navigator} route={route} /> :
+        route.id === 'Detail' ? <Detail navigator={navigator} route={route} /> :
+        <View></View>}
     </ScrollView>
 )

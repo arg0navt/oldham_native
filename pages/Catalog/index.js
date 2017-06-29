@@ -33,7 +33,7 @@ class Catalog extends Component{
         if(nextProps.Store.category.categoryList != this.props.Store.category.categoryList){
             this.setState({l:nextProps.Store.category.categoryList.length})
         }
-        if(nextProps.Store.category.categoryActive != this.props.Store.category.categoryActive){
+        if(nextProps.Store.category.categoryActive != this.props.Store.category.categoryActive || nextProps.route != this.props.route){
             this.setState({load:true})
             setTimeout(()=>{
                 this.setState({load:false})

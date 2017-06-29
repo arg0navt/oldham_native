@@ -28,7 +28,7 @@ class CatalogPanel extends Component {
     render(){
         return(
             <View>
-            {this.props.Store.basket.length > 0 && this.props.route.name == `Catalog` ? (                
+            {this.props.Store.basket.length > 0 && (this.props.route.name == `Catalog` || this.props.route.name == `Detail`) ? (                
             <View style={c.bottomPanel}>
                 <Image source={require('../../img/bottom.jpg')} style={{width:w.width, height:63,position:'absolute', top:0,bottom:0,left:0,right:0}} />
                 <View style={c.bottom}>

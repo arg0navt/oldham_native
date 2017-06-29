@@ -89,10 +89,7 @@ class Item extends Component{
             found.map((item, index) => {
                 if (item.width == 30){
                     setTimeout(()=>{
-                        this.setState({
-                            num: item.call || 1,
-                            width:30
-                        })
+                        this.setState({num: item.call || 1,width:30})
                     },10)
                 } else {
                     setTimeout(()=>{
@@ -112,16 +109,18 @@ class Item extends Component{
         return(
             <View style={c.item}>
                 <View style={c.itemPich}>
-                    <View style={c.statusWr}></View>
-                    <View style={c.itemImgWr}>
-                        <Image style={c.img} source={{uri: `http://dev.kaerus.ru/uploads/${item.item_image_m}`}} />
-                    </View>
+                    <TouchableOpacity onPress={() => this.props.nav.push({id:'Detail', name:'Detail', itemId:this.props.item.item_id})}>
+                        <View style={c.statusWr}></View>
+                        <View style={c.itemImgWr}>
+                            <Image style={c.img} source={{uri: `http://dev.kaerus.ru/uploads/${item.item_image_m}`}} />
+                        </View>
+                    </TouchableOpacity>
                 </View>
                 <View style={c.itemText}>
-                    <View>
+                    <TouchableOpacity onPress={() => this.props.nav.push({id:'Detail', name:'Detail', itemId:this.props.item.item_id})}>
                         <Text style={c.name}>{item.item_name}</Text>
                         <Text style={c.descroption}>{item.item_description}</Text>
-                    </View>
+                    </TouchableOpacity>
                     <View style={c.buttons}>
                     {item.item_size_m_price != null ? (
                         <View style={c.width}>

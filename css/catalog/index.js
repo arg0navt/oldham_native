@@ -65,7 +65,9 @@ export default StyleSheet.create({
         flexWrap: 'wrap',
         justifyContent:'space-between',
         alignItems:'flex-start',
-        flexDirection:'row'
+        flexDirection:'row',
+        borderBottomWidth:1,
+        borderColor:'rgba(255,255,255,.1)'
     },
     itemPich:{
         flex:1,
@@ -198,4 +200,96 @@ export default StyleSheet.create({
         backgroundColor:'#dc4738',
         borderRadius:4
     },
+    numItem:{
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'center',
+        alignItems:'center',
+        flexDirection:'row',
+        width:81,
+        height:24,
+        borderWidth: 1,
+        borderColor: '#e64b3b',
+        marginTop:0
+    },
+    uiNumM:{
+        flex:1,
+        backgroundColor:'#e64b3b',
+        maxWidth:24,
+        height:22,
+        marginTop:0
+    },
+    input:{
+        flex:1,
+        maxWidth:31,
+        height:22,
+        color:'#fff',
+        textAlign:'center'
+    },
+    minus:{
+        fontSize:35,
+        textAlign:'center',
+        color:'#ffffff',
+        lineHeight:21,
+    },
+    bottom:{
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'center',
+        alignItems:'center',
+        flexDirection:'row',
+        paddingTop:11,
+        paddingLeft:15,
+        paddingRight:15
+    },
+    col:{
+        display:'flex',
+        flexWrap: 'wrap',
+        alignItems:'center',
+        flexDirection:'row',
+        flex:1,
+        height:41
+    },
+    colLeft:{
+        justifyContent:'flex-start',
+    },
+    colRight:{
+        justifyContent:'flex-end',
+    },
+    bottomPanel:{
+        height:63
+    },
+    iconKorz:{
+        marginLeft:15
+    },
+    bottomTextOne:{
+        color:'#ffffff',
+        fontSize:11,
+    },
+    bottomTextTwo:{
+        color:'#ffffff',
+        fontSize:11,
+        marginTop:0,
+        marginBottom:0,
+        lineHeight:21,
+    },
+    bottomTextTwoSpan:{
+        fontSize:21,
+        fontWeight:'bold'
+    },
+    textRight:{
+        textAlign:'right'
+    },
+    border:{
+        borderLeftWidth:1,
+        borderColor:'#ab2e20'
+    },
+    nextOrder:{
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'center',
+        alignItems:'center',
+        flexDirection:'row',
+        height:64
+    }
 })

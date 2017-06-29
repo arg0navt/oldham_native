@@ -18,8 +18,15 @@ const CatalogHoc = (ComposedComponent) => {
             })
             .catch((error) => {})
         }
+        getDetail(id){
+            axios.get(Api('Pwa', 'getItem', `%22itemId%22:${id}`))
+            .then((response) => {
+                this.pushDetail(response.data[0].result)
+            })
+            .catch((error) => {})
+        }
         render() {
-            return <ComposedComponent getItems={this.getItems} getType={this.getType} {...this.props} {...this.state} />;
+            return <ComposedComponent getDetail={this.getDetail} getItems={this.getItems} getType={this.getType} {...this.props} {...this.state} />;
         }
     }
     return CatalogHoc

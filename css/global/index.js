@@ -40,5 +40,33 @@ export default StyleSheet.create({
         paddingLeft:0,
         paddingRight:0,
         width:'100%'
+    },
+    uiNum:{
+        width: 125,
+        height: 30,
+        borderRadius:4,
+        borderWidth:1,
+        borderColor:'#fff',
+        marginTop:15
+    },
+    minus:{
+        width:31,
+        height:28,
+    },
+    plus:{
+        width:31,
+        height:28,
+    },
+    input:{
+        borderWidth:0,
+        height:28,
+        width:'100%',
+        backgroundColor:'rgba(0,0,0,0)',
+    },
+    addCart:{
+        width:'100%',
+        height:28,
+        backgroundColor:'#e64b3b',
+        borderWidth:0,
     }
 })

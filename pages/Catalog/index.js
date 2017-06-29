@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Dimensions, ProgressBar } from 'react-native';
+import { Text, View, ScrollView, Dimensions, ProgressBar, ActivityIndicator } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view'
 import MaskTabBar from 'react-native-scrollable-tab-view-mask-bar'
 import { connect } from 'react-redux'
@@ -16,7 +16,8 @@ class Catalog extends Component{
         super(props)
         this.state = {
             n:1,
-            l:0
+            l:0,
+            load:false
         }
     }
     componentDidMount(){
@@ -31,6 +32,12 @@ class Catalog extends Component{
     componentWillReceiveProps(nextProps){
         if(nextProps.Store.category.categoryList != this.props.Store.category.categoryList){
             this.setState({l:nextProps.Store.category.categoryList.length})
+        }
+        if(nextProps.Store.category.categoryActive != this.props.Store.category.categoryActive){
+            this.setState({load:true})
+            setTimeout(()=>{
+                this.setState({load:false})
+            },3000)
         }
     }
     onSwipeLeft() {
@@ -72,9 +79,11 @@ class Catalog extends Component{
                     </ScrollableTabView>
                 ) : (<View></View>)}
                 </View>
-                <GestureRecognizer onSwipeLeft={(state) => this.onSwipeLeft(state)} onSwipeRight={(state) => this.onSwipeRight(state)}>
-                    <ItemList list={category.categoryActive} />
-                </GestureRecognizer>
+                {category.categoryActive.length == 0 || this.state.load == true ? <View style={{height:w.height - 100, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row',}}><ActivityIndicator/></View> : (
+                    <GestureRecognizer onSwipeLeft={(state) => this.onSwipeLeft(state)} onSwipeRight={(state) => this.onSwipeRight(state)}>
+                        <ItemList nav={this.props.navigator} list={category.categoryActive} />
+                    </GestureRecognizer>
+                )}
             </View>
         )
     }

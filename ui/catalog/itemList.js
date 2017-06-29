@@ -5,11 +5,12 @@ import c from '../../css/catalog';
 
 const w = Dimensions.get('window');
 
-export default ItemList = (list) => {
+export default ItemList = (list, nav) => {
+    console.log(nav)
     return (
     <View style={{width:'100%',height:w.height - 105}}>
         <ScrollView style={c.categoryWr}>
-        {list.list.map((item, index) => <Item key={index} item={item} />)}
+        {list.list.map((item, index) => <Item nav={nav} key={index} item={item} />)}
         </ScrollView>
     </View>
 )

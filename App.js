@@ -10,6 +10,7 @@ import routes from './config/routes'
 import { RenderScene } from './config/routes'
 import AppCss from './css/AppStyle';
 import Reducers from './reducers';
+import CatalogPanel from './ui/panel'
 
 const store = createStore(Reducers)
 const w = Dimensions.get('window');
@@ -34,7 +35,8 @@ class App extends React.Component {
                   <StatusBar translucent={true} />
                   {route.id != 'EndRegistration' ? <Header route={route} navigator={navigator} openPanel={this.openControlPanel} /> : <View></View>}
                   <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1, position:'absolute', top:0, left:0, right:0, bottom:0}} />
-                  <RenderScene route={route} navigator={navigator}/>
+                  <RenderScene route={route} navigator={navigator} />
+                  <CatalogPanel route={route} navigator={navigator} />
                 </View>
               )}      
             />

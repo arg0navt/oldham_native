@@ -132,7 +132,7 @@ class Item extends Component{
                             <TouchableOpacity style={c.uiNumM} onPress={this.sub.bind(this)}>
                                 <Text style={[global.minus, c.minus, {lineHeight:21, width:25}]}>-</Text>
                             </TouchableOpacity>
-                            <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input]} value={this.state.num + ''} />
+                            <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input]} value={`${this.state.num}`} placeholder={`${this.state.num}`}/>
                             <TouchableOpacity style={c.uiNumM} onPress={this.sum.bind(this)}>
                                 <Text style={[global.plus, c.plus, {lineHeight:19, borderLeftWidth:0}]}>+</Text>
                             </TouchableOpacity>
@@ -142,7 +142,7 @@ class Item extends Component{
                             <TouchableOpacity style={c.uiNumM} onPress={this.sub40.bind(this)}>
                                 <Text style={[global.minus, c.minus, {lineHeight:21}]}>-</Text>
                             </TouchableOpacity>
-                            <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input]} value={this.state.num40 + ''} />
+                            <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input]} value={`${this.state.num40}`} placeholder={`${this.state.num40}`} />
                             <TouchableOpacity style={c.uiNumM} onPress={this.sum40.bind(this)}>
                                 <Text style={[global.plus, c.plus, {lineHeight:19, borderLeftWidth:0}]}>+</Text>
                             </TouchableOpacity>

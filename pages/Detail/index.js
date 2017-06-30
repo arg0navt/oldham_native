@@ -113,7 +113,7 @@ class Detail extends Component{
         return(
             <ScrollView style={[d.detailPage, {height:w.height}]}>
                 <View style={{width:'100%', height:240, position:'relative'}}>
-                    <Image source={{uri: `http://dev.kaerus.ru/uploads/${detail.item_image_750x480}`}} style={{position:'absolute', top:0, left:0,zIndex:1, width: '100%', height:240}} resizeMode="stretch" />
+                    <Image source={{uri: `http://dev.kaerus.ru/uploads/${detail.item_image_750x480}`}} style={{width: '100%', height:240}} resizeMode="stretch" />
                 </View>
                 <View style={d.detailText}>
                     <Text style={d.name}>{detail.item_name}</Text>
@@ -143,7 +143,7 @@ class Detail extends Component{
                                     <TouchableOpacity style={d.uiNumM} onPress={this.sub.bind(this, detail)}>
                                         <Text style={[global.minus, c.minus, {lineHeight:25, width:40}]}>-</Text>
                                     </TouchableOpacity>
-                                    <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input, d.input]} value={this.state.num + ''} />
+                                    <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input, d.input]} value={`${this.state.num}`} placeholder={`${this.state.num}`} />
                                     <TouchableOpacity style={d.uiNumM} onPress={this.sum.bind(this, detail)}>
                                         <Text style={[global.plus, c.plus, {lineHeight:25, width:40, borderLeftWidth:0}]}>+</Text>
                                     </TouchableOpacity>
@@ -168,9 +168,9 @@ class Detail extends Component{
                                 ) : this.state.num40 >= 1 ? (
                                     <View style={[global.uiNum, c.numItem, d.numItem]} ref={(numWrap) => this.numWrap = numWrap}>
                                         <TouchableOpacity style={d.uiNumM} onPress={this.sub40.bind(this, detail)}>
-                                            <Text style={[global.minus, c.minus, {lineHeight:21, width:25}]}>-</Text>
+                                            <Text style={[global.minus, c.minus, {lineHeight:25, width:40}]}>-</Text>
                                         </TouchableOpacity>
-                                        <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input, d.input]} value={this.state.num40 + ''} />
+                                        <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input, d.input]} value={`${this.state.num40}`} placeholder={`${this.state.num40}`} />
                                         <TouchableOpacity style={d.uiNumM} onPress={this.sum40.bind(this, detail)}>
                                             <Text style={[global.plus, c.plus, {lineHeight:25, width:40, borderLeftWidth:0}]}>+</Text>
                                         </TouchableOpacity>

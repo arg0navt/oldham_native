@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, Dimensions, ProgressBar, ActivityIndicator, Image, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, ScrollView, Dimensions, ProgressBar, Image, TouchableOpacity, TextInput, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux'
 import CatalogHoc from '../../hoc/catalogListHoc'
 import global from '../../css/global';
@@ -17,6 +17,15 @@ class Detail extends Component{
             num:0,
             num40:0,
             width:30,
+            load:false
+        }
+    }
+    componentWillReceiveProps(nextProps){
+        if(nextProps.Store.category.detail != this.props.Store.category.detail){
+            this.setState({load:true})
+            setTimeout(()=>{
+                this.setState({load:false})
+            },1500)
         }
     }
     price(){
@@ -112,7 +121,9 @@ class Detail extends Component{
         const { detail } = this.props.Store.category
         return(
             <ScrollView style={[d.detailPage, {height:w.height}]}>
-                <View style={{width:'100%', height:240, position:'relative'}}>
+                {this.state.load == false ? (
+                    <View>
+                        <View style={{width:'100%', height:240, position:'relative'}}>
                     <Image source={{uri: `http://dev.kaerus.ru/uploads/${detail.item_image_750x480}`}} style={{width: '100%', height:240}} resizeMode="stretch" />
                 </View>
                 <View style={d.detailText}>
@@ -180,6 +191,11 @@ class Detail extends Component{
                         </View>
                     ) : (<View style={{display:'none'}}></View>)}
                 </View>
+                    </View>
+                ) : (
+                    <View style={{height:200, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row'}}><ActivityIndicator/></View>
+                )}
+                
             </ScrollView>
         )
     }

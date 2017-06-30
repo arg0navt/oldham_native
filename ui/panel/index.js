@@ -29,8 +29,8 @@ class CatalogPanel extends Component {
         return(
             <View>
             {this.props.Store.basket.length > 0 && (this.props.route.name == `Catalog` || this.props.route.name == `Detail`) ? (                
-            <View style={c.bottomPanel}>
-                <Image source={require('../../img/bottom.jpg')} style={{width:'100%', height:63,position:'absolute', top:0,left:0}}>
+            <View style={[c.bottomPanel, {overflow:'hidden'}]}>
+                <Image source={require('../../img/bottom.jpg')} style={{width:'100%', height:63,position:'absolute', top:0,left:0}} />
                 <View style={c.bottom}>
                     <TouchableOpacity onPress={() => this.props.navigator.push({id: 'Basket',name: 'Basket'})} style={[c.col, c.colLeft]}>
                         <Image source={require('../../img/icon/korz.png')} style={{width:23, height:23}} />
@@ -51,14 +51,8 @@ class CatalogPanel extends Component {
                         <Image source={require('../../img/icon/up.png')} style={{marginLeft:15, width:16, height:16}} />
                     </TouchableOpacity>
                 </View>
-                </Image>
             </View>
-            ) : this.props.Store.basket.length > 0 && this.props.route.name == 'Basket' ? (
-                    <View style={c.bottomPanel}>
-                        <Image source={require('../../img/bottom.jpg')} style={{width:w.width, height:63,position:'absolute', top:0,bottom:0,left:0,right:0}} />
-                        <TouchableOpacity onPress={() => this.props.navigator.push({id: 'Order',name: 'Order'})} style={c.nextOrder}><Text style={{color:'#fff',fontSize: 21,fontWeight:'bold'}}>Продолжить</Text></TouchableOpacity>
-                    </View> 
-                ) : (<View></View>)}
+            ) : (<View></View>)}
                 
             </View>
         )

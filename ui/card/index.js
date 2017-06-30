@@ -80,7 +80,7 @@ class Card extends Component{
                     ) : (<View></View>)}
                     {Object.keys(loyalty).length != 0 ? (
                         <View style={card.cardInfo}>
-                            <View style={[global.row, card.cardName]}><Text style={card.cardNameText}>{user.profile.user_name}</Text><Image source={require('./img/icon/up.png')} style={{width:16, height:16}}></Image></View>
+                            <TouchableOpacity onPress={() => this.props.nav.push({id: 'User',name: 'User'})} style={[global.row, card.cardName]}><Text style={card.cardNameText}>{user.profile.user_name}</Text><Image source={require('./img/icon/up.png')} style={{width:16, height:16}}></Image></TouchableOpacity>
                             <Text style={card.cardScore}>
                                 активность <Text style={card.cardScoreActive}>{loyalty.user_activity}</Text> из 100
                             </Text>

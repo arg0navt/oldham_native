@@ -65,6 +65,25 @@ const UserHoc = (ComposedComponent) => {
                 .catch((error) => { this.error(error) })
             }
         }
+        getUserSettings(token, phone, OldPassword, NewPassword, name, lastname, email, city){
+            const settings = `%22token%22:%22${token}%22,%22user_login%22:%22${phone}%22,%22user_phone%22:%22${phone}%22,%22user_old_password%22:%22${OldPassword}%22,%22user_new_password%22:%22${NewPassword}%22,%22user_name%22:%22${name}%22${lastname != "" ? ',%22user_lastname%22:%22' + lastname + '%22': ''}${email != "" ? ',%22user_email%22:%22' + email + '%22': ''}${city != "" ? ',%22user_address%22:%22' + city + '%22': ''}`
+            if (phone == undefined || phone == '' || OldPassword == undefined || OldPassword == '' || NewPassword == undefined || NewPassword == '' ){
+                this.error('Введите логин или пароль')
+            } else {
+                axios.get(Api('User','update', settings))
+                .then((response) => {
+                    catcherError(response)
+                    .then((data) => {
+                        this.pushToken(data.user_token)
+                        this.getLogin(token, phone, NewPassword)
+                    })
+                    .catch((message) => {
+                        this.error(message)
+                    })
+                })
+                .catch((error) => {})
+            }
+        }
         getLoyality(token){
             axios.get(Api('Loyalty','get',`"token":"${token}"`))
             .then((response)=>{
@@ -79,7 +98,7 @@ const UserHoc = (ComposedComponent) => {
             .catch((error) => {})
         }
         render() {
-            return <ComposedComponent error={this.error} getRegistration={this.getRegistration} getLoyality={this.getLoyality} getToken={this.getToken} getLogin={this.getLogin} {...this.props} {...this.state} />;
+            return <ComposedComponent getUserSettings={this.getUserSettings} error={this.error} getRegistration={this.getRegistration} getLoyality={this.getLoyality} getToken={this.getToken} getLogin={this.getLogin} {...this.props} {...this.state} />;
         }
     }
     return UserHoc

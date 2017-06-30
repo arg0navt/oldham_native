@@ -30,7 +30,7 @@ class CatalogPanel extends Component {
             <View>
             {this.props.Store.basket.length > 0 && (this.props.route.name == `Catalog` || this.props.route.name == `Detail`) ? (                
             <View style={c.bottomPanel}>
-                <Image source={require('../../img/bottom.jpg')} style={{width:w.width, height:63,position:'absolute', top:0,bottom:0,left:0,right:0}} />
+                <Image source={require('../../img/bottom.jpg')} style={c.bottomBg} />
                 <View style={c.bottom}>
                     <TouchableOpacity onPress={() => this.props.navigator.push({id: 'Basket',name: 'Basket'})} style={[c.col, c.colLeft]}>
                         <Image source={require('../../img/icon/korz.png')} style={{width:23, height:23}} />

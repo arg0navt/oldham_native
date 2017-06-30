@@ -80,12 +80,14 @@ export default StyleSheet.create({
     itemImgWr:{
         width:85,
         height:85,
-        overflow:'hidden',
         position:'relative'
     },
     img:{
         width:85,
-        height:85
+        height:85,
+        position:'absolute',
+        top:0,
+        left:0
     },
     name:{
         fontSize:16,
@@ -255,7 +257,18 @@ export default StyleSheet.create({
         justifyContent:'flex-end',
     },
     bottomPanel:{
-        height:63
+        width:'100%',
+        height:63,
+        position:'relative'
+    },
+    bottomBg:{
+        width:'100%', 
+        height:63,
+        position:'absolute', 
+        top:0,
+        bottom:0,
+        left:0,
+        right:0
     },
     iconKorz:{
         marginLeft:15

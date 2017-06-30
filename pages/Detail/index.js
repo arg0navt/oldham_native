@@ -143,7 +143,7 @@ class Detail extends Component{
                                     <TouchableOpacity style={d.uiNumM} onPress={this.sub.bind(this, detail)}>
                                         <Text style={[global.minus, c.minus, {lineHeight:25, width:40}]}>-</Text>
                                     </TouchableOpacity>
-                                    <TextInput underlineColorAndroid={'rgba(0,0,0,0)'} style={[global.input, c.input, d.input]} value={this.state.num + ''} />
+                                    <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input, d.input]} value={this.state.num + ''} />
                                     <TouchableOpacity style={d.uiNumM} onPress={this.sum.bind(this, detail)}>
                                         <Text style={[global.plus, c.plus, {lineHeight:25, width:40, borderLeftWidth:0}]}>+</Text>
                                     </TouchableOpacity>
@@ -170,9 +170,9 @@ class Detail extends Component{
                                         <TouchableOpacity style={d.uiNumM} onPress={this.sub40.bind(this, detail)}>
                                             <Text style={[global.minus, c.minus, {lineHeight:21, width:25}]}>-</Text>
                                         </TouchableOpacity>
-                                        <TextInput underlineColorAndroid={'rgba(0,0,0,0)'} style={[global.input, c.input, d.input]} value={this.state.num40 + ''} />
-                                        <TouchableOpacity style={c.uiNumM} onPress={this.sum40.bind(this, detail)}>
-                                            <Text style={[global.plus, c.plus, {lineHeight:19, borderLeftWidth:0}]}>+</Text>
+                                        <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input, d.input]} value={this.state.num40 + ''} />
+                                        <TouchableOpacity style={d.uiNumM} onPress={this.sum40.bind(this, detail)}>
+                                            <Text style={[global.plus, c.plus, {lineHeight:25, width:40, borderLeftWidth:0}]}>+</Text>
                                         </TouchableOpacity>
                                     </View>
                                 ) : (<View  style={{display:'none'}}></View>)}

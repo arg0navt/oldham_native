@@ -110,7 +110,6 @@ class Item extends Component{
             <View style={c.item}>
                 <View style={c.itemPich}>
                     <TouchableOpacity onPress={() => this.props.nav.push({id:'Detail', name:'Detail', itemId:this.props.item.item_id})}>
-                        <View style={c.statusWr}></View>
                         <View style={c.itemImgWr}>
                             <Image style={c.img} source={{uri: `http://dev.kaerus.ru/uploads/${item.item_image_m}`}} />
                         </View>
@@ -133,7 +132,7 @@ class Item extends Component{
                             <TouchableOpacity style={c.uiNumM} onPress={this.sub.bind(this)}>
                                 <Text style={[global.minus, c.minus, {lineHeight:21, width:25}]}>-</Text>
                             </TouchableOpacity>
-                            <TextInput style={[global.input, c.input]} value={this.state.num + ''} />
+                            <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input]} value={this.state.num + ''} />
                             <TouchableOpacity style={c.uiNumM} onPress={this.sum.bind(this)}>
                                 <Text style={[global.plus, c.plus, {lineHeight:19, borderLeftWidth:0}]}>+</Text>
                             </TouchableOpacity>
@@ -143,7 +142,7 @@ class Item extends Component{
                             <TouchableOpacity style={c.uiNumM} onPress={this.sub40.bind(this)}>
                                 <Text style={[global.minus, c.minus, {lineHeight:21}]}>-</Text>
                             </TouchableOpacity>
-                            <TextInput style={[global.input, c.input]} value={this.state.num40 + ''} />
+                            <TextInput editable={false} underlineColorAndroid={'rgba(0,0,0,0)'} placeholderTextColor={'#fff'} style={[global.input, c.input]} value={this.state.num40 + ''} />
                             <TouchableOpacity style={c.uiNumM} onPress={this.sum40.bind(this)}>
                                 <Text style={[global.plus, c.plus, {lineHeight:19, borderLeftWidth:0}]}>+</Text>
                             </TouchableOpacity>

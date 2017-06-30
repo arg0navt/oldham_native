@@ -221,6 +221,8 @@ export default StyleSheet.create({
     },
     input:{
         flex:1,
+        fontSize:14,
+        backgroundColor:'rgba(0,0,0,0)',
         maxWidth:31,
         height:22,
         color:'#fff',

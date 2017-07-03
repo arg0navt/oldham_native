@@ -10,6 +10,7 @@ import Basket from '../pages/Basket';
 import Detail from '../pages/Detail';
 import Shares from '../pages/Shares';
 import SharesDetail from '../pages/SharesDetail';
+import Guarantees from '../pages/Guarantees';
 import User from '../pages/User';
 import UserSettings from '../pages/User/settings';
 
@@ -25,6 +26,7 @@ export default routes = [
     {id: 'SharesDetail', name: 'SharesDetail', component: SharesDetail, index: 8 },
     {id: 'Shares', name: 'Shares', component: Shares, index: 9},
     {id: 'UserSettings', name: 'UserSettings', component: UserSettings, index: 10},
+    {id: 'Guarantees', name: 'Guarantees', component: Guarantees, index: 11},
 ];
 export const RenderScene = ({route, navigator}) => (
     <ScrollView style={{flex:1}}>
@@ -40,6 +42,7 @@ export const RenderScene = ({route, navigator}) => (
         route.id === 'SharesDetail' ? <SharesDetail navigator={navigator} route={route} /> :
         route.id === 'User' ? <User navigator={navigator} route={route} /> :
         route.id === 'UserSettings' ? <UserSettings navigator={navigator} route={route} /> :
+        route.id === 'Guarantees' ? <Guarantees navigator={navigator} route={route} /> :
         <View></View>}
     </ScrollView>
 )

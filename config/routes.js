@@ -13,6 +13,7 @@ import SharesDetail from '../pages/SharesDetail';
 import Guarantees from '../pages/Guarantees';
 import User from '../pages/User';
 import UserSettings from '../pages/User/settings';
+import Contact from '../pages/Contact';
 
 export default routes = [
     {id: 'Home', name: 'Home', component: Home, index: 0},
@@ -27,6 +28,7 @@ export default routes = [
     {id: 'Shares', name: 'Shares', component: Shares, index: 9},
     {id: 'UserSettings', name: 'UserSettings', component: UserSettings, index: 10},
     {id: 'Guarantees', name: 'Guarantees', component: Guarantees, index: 11},
+    {id: 'Contact', name: 'Contact', component: Contact, index: 12},
 ];
 export const RenderScene = ({route, navigator}) => (
     <ScrollView style={{flex:1}}>
@@ -43,6 +45,7 @@ export const RenderScene = ({route, navigator}) => (
         route.id === 'User' ? <User navigator={navigator} route={route} /> :
         route.id === 'UserSettings' ? <UserSettings navigator={navigator} route={route} /> :
         route.id === 'Guarantees' ? <Guarantees navigator={navigator} route={route} /> :
+        route.id === 'Contact' ? <Contact navigator={navigator} route={route} /> :
         <View></View>}
     </ScrollView>
 )

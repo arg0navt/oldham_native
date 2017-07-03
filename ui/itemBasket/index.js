@@ -130,7 +130,7 @@ class ItemBasket extends Component{
                                 <TouchableOpacity style={c.uiNumM} onPress={this.sub.bind(this)}>
                                     <Text style={[global.minus, c.minus, {lineHeight:21, width:25}]}>-</Text>
                                 </TouchableOpacity>
-                                <TextInput style={[global.input, c.input]} value={this.state.num + ''} />
+                                <Text style={[global.input, c.input]}>{this.state.num}</Text>
                                 <TouchableOpacity style={c.uiNumM} onPress={this.sum.bind(this)}>
                                     <Text style={[global.plus, c.plus, {lineHeight:19, borderLeftWidth:0}]}>+</Text>
                                 </TouchableOpacity>
@@ -140,7 +140,7 @@ class ItemBasket extends Component{
                                 <TouchableOpacity style={c.uiNumM} onPress={this.sub40.bind(this)}>
                                     <Text style={[global.minus, c.minus, {lineHeight:21, width:25}]}>-</Text>
                                 </TouchableOpacity>
-                                <TextInput style={[global.input, c.input]} value={this.state.num40 + ''} />
+                                <Text style={[global.input, c.input]}>{this.state.num40}</Text>
                                 <TouchableOpacity style={c.uiNumM} onPress={this.sum40.bind(this)}>
                                     <Text style={[global.plus, c.plus, {lineHeight:19, borderLeftWidth:0}]}>+</Text>
                                 </TouchableOpacity>

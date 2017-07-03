@@ -35,7 +35,7 @@ class CatalogPanel extends Component {
                     <TouchableOpacity onPress={() => this.props.navigator.push({id: 'Basket',name: 'Basket'})} style={[c.col, c.colLeft]}>
                         <Image source={require('../../img/icon/korz.png')} style={{width:23, height:23}} />
                         <View style={c.iconKorz}>
-                            <Text style={c.bottomTextOne}>В корзине</Text>
+                            <Text style={[c.bottomTextOne, c.bottomTextOneBold]}>В корзине</Text>
                             <Text style={c.bottomTextTwo}>
                                 <Text style={c.bottomTextTwoSpan}>{this.state.length}</Text> позиций
                             </Text>
@@ -43,7 +43,7 @@ class CatalogPanel extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigator.push({id: 'Basket',name: 'Basket'})} style={[c.col, c.colRight, c.border]}>
                         <View style={[c.bottomItem]}>
-                            <Text style={c.bottomTextOne}>На сумму</Text>
+                            <Text style={[c.bottomTextOne, c.bottomTextOneBold]}>На сумму</Text>
                             <Text style={[c.bottomTextTwo, c.textRight]}>
                                 <Text style={c.bottomTextTwoSpan}>{this.props.Store.price} ₽</Text>
                             </Text>

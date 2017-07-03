@@ -37,6 +37,7 @@ class Login extends Component{
                         enablesReturnKeyAutomatically={true}
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
+                        keyboardType={'numeric'}
                     />
                     <TextInput
                         style={[c.formInput, {marginBottom:30}]}

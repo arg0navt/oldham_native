@@ -28,6 +28,10 @@ export default StyleSheet.create({
         alignItems:'center',
         flexDirection:'row'
     },
+    itemTextList:{
+        height:70,
+        justifyContent:'flex-start',
+    },
     titleLink:{
         paddingLeft:17,
         paddingRight:17,
@@ -46,6 +50,24 @@ export default StyleSheet.create({
         bottom:0,
         left:0,
         right:0
+    },
+    dataLin:{
+        paddingRight:20,
+        borderRightWidth:1,
+        borderColor:'rgba(255,255,255,.2)'
+    },
+    titleLinkLeft:{
+        textAlign:'left'
+    },
+    datatire:{
+        color:'#fff',
+        paddingLeft:10,
+        paddingRight:10,
+        marginTop:-18
+    },
+    dataNum:{
+        fontSize:13,
+        lineHeight:20
     },
     dataPanel:{
         width:'100%',
@@ -72,5 +94,24 @@ export default StyleSheet.create({
         color:'#fff',
         fontSize:14,
         marginBottom:20
-    }
+    },
+    date:{
+        display:'flex',
+        flexWrap: 'wrap',
+        justifyContent:'flex-start',
+        alignItems:'center',
+        flexDirection:'row',
+        paddingLeft:15
+    },
+    citcleData:{
+        width:25,
+        height:25,
+        borderRadius:25,
+        borderWidth:1,
+        borderColor:'#fff',
+    },
+    datatext:{
+        textAlign:'center',
+        color:'#fff'
+    },
 })

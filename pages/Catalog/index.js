@@ -79,7 +79,7 @@ class Catalog extends Component{
                     </ScrollableTabView>
                 ) : (<View></View>)}
                 </View>
-                {category.categoryActive.length == 0 || this.state.load == true ? <View style={{height:w.height - 100, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row',}}><ActivityIndicator/></View> : (
+                {category.categoryActive.length == 0 || this.state.load == true ? <View style={{height:w.height - 100, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row',}}><ActivityIndicator color={'#d34536'}/></View> : (
                     <GestureRecognizer onSwipeLeft={(state) => this.onSwipeLeft(state)} onSwipeRight={(state) => this.onSwipeRight(state)}>
                         <ItemList nav={this.props.navigator} list={category.categoryActive} />
                     </GestureRecognizer>

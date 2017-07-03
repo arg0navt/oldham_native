@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { AppRegistry, Navigator, StyleSheet, Text, View, Image, ScrollView, Dimensions, TouchableOpacity } from 'react-native';
+import { AppRegistry, Navigator, StyleSheet, Text, View, Image, ScrollView, Dimensions, TouchableOpacity, BackAndroid } from 'react-native';
 import global from '../../css/global';
 import styleHeader from '../../css/header';
 import { connect } from 'react-redux'
@@ -9,6 +9,15 @@ import { Router, Route, Animations, Schema, Actions } from 'react-native-redux-r
 const w = Dimensions.get('window');
 
 class Header extends Component{
+    componentDidMount(){
+        BackAndroid.addEventListener('hardwareBackPress', () => {
+            if (this.props.route.id != 'Home') {
+                this.props.navigator.jumpBack()
+            } else {
+                return false;
+            }
+        })
+    }
     openNavigation(){
         this.props.openPanel()
     }

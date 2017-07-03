@@ -115,7 +115,7 @@ export default StyleSheet.create({
     plus:{
         width:25,
         height:24,
-        borderColor:'#fff',
+        borderColor:'rgba(255,255,255,.3)',
         borderLeftWidth:1,
         fontSize:25,
         textAlign:'center',
@@ -224,6 +224,7 @@ export default StyleSheet.create({
         fontSize:14,
         backgroundColor:'rgba(0,0,0,0)',
         maxWidth:31,
+        width:31,
         height:22,
         color:'#fff',
         textAlign:'center'
@@ -304,5 +305,8 @@ export default StyleSheet.create({
         alignItems:'center',
         flexDirection:'row',
         height:64
+    },
+    bottomTextOneBold:{
+        fontWeight:'bold'
     }
 })

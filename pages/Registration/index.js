@@ -24,7 +24,7 @@ class Registration extends Component{
     render(){
         const {token} = this.props.Store.user
         return(
-            <ScrollView style={global.content}>
+            <ScrollView style={[global.content, {marginTop:-70}]}>
                 <View style={c.wrap}>
                 <View style={c.comeinCenter}>
                     <TextInput
@@ -44,6 +44,7 @@ class Registration extends Component{
                         placeholder={'Номер телефона'}
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
+                        keyboardType={'numeric'}
                     />
                     <TextInput
                         style={[c.formInputReg]}
@@ -56,13 +57,14 @@ class Registration extends Component{
                         underlineColorAndroid={'rgba(0,0,0,0)'}
                     />
                     <TextInput
-                        style={[c.formInputReg, {marginBottom:80}]}
+                        style={[c.formInputReg, {marginBottom:40}]}
                         onChangeText={(text) => this.setState({cod:text})}
                         value={this.state.cod}
                         enablesReturnKeyAutomatically={true}
                         placeholder={'Код приглашения'}
                         placeholderTextColor={'#fff'}
                         underlineColorAndroid={'rgba(0,0,0,0)'}
+                        keyboardType={'numeric'}
                     />
                     <TouchableOpacity onPress={this.registration.bind(this, token, this.state.name, this.state.login, this.state.password, this.state.cod)} style={[c.button, c.comeinButtonLogin, {width:310, marginTop:30}]}  activeOpacity={1}>
                         <Text style={c.buttonText}>Зарегистрироваться</Text>

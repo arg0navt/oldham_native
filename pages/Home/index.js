@@ -35,7 +35,7 @@ class Home extends Component{
                 {this.state.loadCard == true ? (
                     <Card nav={this.props.navigator} />
                 ) : (
-                    <View style={{height:200, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row'}}><ActivityIndicator/></View>
+                    <View style={{height:200, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row'}}><ActivityIndicator color={'#d34536'}/></View>
                 )}
                 <Catalog nav={this.props.navigator} />
             </ScrollView>

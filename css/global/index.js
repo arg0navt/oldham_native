@@ -61,6 +61,7 @@ export default StyleSheet.create({
         borderWidth:0,
         height:28,
         width:'100%',
+        color:'#fff',
         backgroundColor:'rgba(0,0,0,0)',
     },
     addCart:{

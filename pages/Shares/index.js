@@ -12,10 +12,28 @@ const Item = ({data, nav}) => (
         <TouchableOpacity onPress={()=> nav.push({id: 'SharesDetail',name: 'SharesDetail', sharesId:data.action_id})} style={s.itemPich}>
             <Image style={{position:'absolute', width:'100%', height:240}} source={{uri: `http://dev.kaerus.ru/uploads/${data.action_image_s}`}} />
         </TouchableOpacity>
-        <View style={s.itemText}>
-            <View style={s.date}></View>
+        <View style={[s.itemText, s.itemTextList]}>
+            <View style={[s.date, s.dataLin]}>
+                <View style={s.dataWrap}>
+                    <View style={s.dataItem}>
+                        <View style={s.citcleData}><Text style={[s.datatext, s.dataNum]}>11</Text></View>
+                        <Text style={s.datatext}>
+                            авг
+                        </Text>
+                    </View>
+                </View>
+                <Text style={s.datatire}>-</Text>
+                <View style={s.dataWrap}>
+                    <View style={s.dataItem}>
+                        <View style={s.citcleData}><Text style={[s.datatext, s.dataNum]}>20</Text></View>
+                        <Text style={s.datatext}>
+                            сен
+                        </Text>
+                    </View>
+                </View>
+            </View>
             <View style={s.title}>
-                <TouchableOpacity onPress={()=> nav.push({id: 'SharesDetail',name: 'SharesDetail', sharesId:data.action_id})}><Text style={s.titleLink}>{data.action_title}</Text></TouchableOpacity>
+                <TouchableOpacity onPress={()=> nav.push({id: 'SharesDetail',name: 'SharesDetail', sharesId:data.action_id})}><Text style={[s.titleLink, s.titleLinkLeft]}>{data.action_title}</Text></TouchableOpacity>
             </View>
         </View>
     </View>

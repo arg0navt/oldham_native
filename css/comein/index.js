@@ -12,6 +12,7 @@ export default StyleSheet.create({
     },
     comeinCenter:{
         width:'100%',
+        height:400,
         overflow:'hidden',
         display:'flex',
         flexWrap: 'wrap',
@@ -80,7 +81,7 @@ export default StyleSheet.create({
         color:'#fff',
         borderColor:'#fff',
         borderBottomWidth:1,
-        marginBottom:15,
+        marginBottom:10,
         marginTop:10,
     }
 })

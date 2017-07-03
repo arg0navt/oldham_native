@@ -13,9 +13,9 @@ class Header extends Component{
         BackAndroid.addEventListener('hardwareBackPress', () => {
             if (this.props.route.id != 'Home') {
                 this.props.navigator.jumpBack()
-                return false;
+                return true;
             } else {
-                return false;
+                return true;
             }
         })
     }

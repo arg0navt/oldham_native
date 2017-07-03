@@ -59,6 +59,9 @@ class Catalog extends Component{
         })
     }
     handleChangeTab(ev){
+        this.setState({
+            n: ev.i + 1
+        })
         this.props.getItems(Number(ev.i) + 1)
     }
     render(){

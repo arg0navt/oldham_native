@@ -22,15 +22,15 @@ class App extends React.Component {
   render() {
     return (
       <View style={{flex:1}}>
-        <Drawer
-          openDrawerOffset={0.45}
-          tapToClose={true}
-          ref={(ref) => this._drawer = ref}
-          content={<Navigation />}
-        >
-          <Navigator
-              initialRoute={routes[0]}
-              renderScene={(route, navigator) => (
+        <Navigator
+          initialRoute={routes[0]}
+          renderScene={(route, navigator) => (
+            <Drawer
+              openDrawerOffset={0.45}
+              tapToClose={true}
+              ref={(ref) => this._drawer = ref}
+              content={<Navigation route={route} navigator={navigator} />}
+            >
                 <View style={{flex:1}}>
                   <StatusBar translucent={true} />
                   {route.id != 'EndRegistration' ? <Header route={route} navigator={navigator} openPanel={this.openControlPanel} /> : <View></View>}
@@ -38,9 +38,10 @@ class App extends React.Component {
                   <RenderScene route={route} navigator={navigator} />
                   <CatalogPanel route={route} navigator={navigator} />
                 </View>
-              )}      
-            />
-        </Drawer>
+                </Drawer>
+            )}      
+        />
+        
         {this.props.Store.error.errorStatus == true ? (
           <View style={{flex:1, position:'absolute',top:0,bottom:0,left:0,right:0,zIndex:99,display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
             <View style={{width:300,backgroundColor:'rgba(0,0,0,.9)',borderRadius:6, minHeight:150,display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row', padding:25}}>

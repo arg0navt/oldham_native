@@ -51,6 +51,10 @@ export default StyleSheet.create({
         fontSize:11,
         marginBottom:10
     },
+    itLeftImg:{
+        width:26,
+        height:26
+    },
     list:{
         width:'100%',
         overflow:'hidden',

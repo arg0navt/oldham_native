@@ -27,9 +27,9 @@ const Item = ({nav, img, text, id}) => (
         </TouchableOpacity>
         <View style={slider.blockText}>
             <View style={[global.row, slider.center]}>
-                <View style={slider.leftText}>
+                <TouchableOpacity style={slider.leftText} onPress={()=> nav.push({id: 'SharesDetail',name: 'SharesDetail', sharesId:id})}>
                     <Text style={slider.sliderText}>{text}</Text>
-                </View>
+                </TouchableOpacity>
                 <View style={slider.rightText}>
                     <TouchableOpacity style={global.row} onPress={()=> nav.push({id: 'Shares',name: 'Shares'})}><Text style={slider.sliderLink}>Все акции</Text><Image source={require('./img/icon/up.png')} style={{width:16, height:16}}></Image></TouchableOpacity>
                 </View>

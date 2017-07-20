@@ -6,9 +6,6 @@ import { connect } from 'react-redux'
 import { url } from '../../config'
 
 class Navigation extends Component{
-    componentDidMount(){
-        console.log(this)
-    }
     goPage(page){
         this.props.navigator.push({id: page,name: page})
     }

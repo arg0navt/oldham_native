@@ -34,7 +34,7 @@ class App extends React.Component {
                 <View style={{flex:1}}>
                   <StatusBar translucent={true} />
                   {route.id != 'EndRegistration' ? <Header route={route} navigator={navigator} openPanel={this.openControlPanel} /> : <View></View>}
-                  <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1, position:'absolute', top:0, left:0, right:0, bottom:0}} />
+                  <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1, position:'absolute', top:20, left:0, width:'100%', height:'100%'}} />
                   <RenderScene route={route} navigator={navigator} />
                   <CatalogPanel route={route} navigator={navigator} />
                 </View>

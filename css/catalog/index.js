@@ -104,7 +104,6 @@ export default StyleSheet.create({
         marginTop:0,
         overflow: 'hidden',
         lineHeight:12,
-        maxHeight:40
     },
     num:{
         width:81,

@@ -193,7 +193,7 @@ class Detail extends Component{
                 </View>
                     </View>
                 ) : (
-                    <View style={{height:200, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row'}}><ActivityIndicator/></View>
+                    <View style={{height:200, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row'}}><ActivityIndicator color={'#d34536'}/></View>
                 )}
                 
             </ScrollView>

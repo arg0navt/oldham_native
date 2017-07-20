@@ -17,7 +17,8 @@ const w = Dimensions.get('window');
 
 class App extends React.Component {
   openControlPanel = () => {
-      this._drawer.open()
+    console.log(this)
+      this._drawer.toggle()
   }
   render() {
     return (
@@ -34,7 +35,7 @@ class App extends React.Component {
                 <View style={{flex:1}}>
                   <StatusBar translucent={true} />
                   {route.id != 'EndRegistration' ? <Header route={route} navigator={navigator} openPanel={this.openControlPanel} /> : <View></View>}
-                  <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1, position:'absolute', top:20, left:0, width:'100%', height:'100%'}} />
+                  <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={{flex:1, position:'absolute', top:25, left:0, width:'100%', height:'100%'}} />
                   <RenderScene route={route} navigator={navigator} />
                   <CatalogPanel route={route} navigator={navigator} />
                 </View>

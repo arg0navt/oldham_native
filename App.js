@@ -17,8 +17,7 @@ const w = Dimensions.get('window');
 
 class App extends React.Component {
   openControlPanel = () => {
-    console.log(this)
-      this._drawer.toggle()
+    this._drawer.toggle()
   }
   render() {
     return (

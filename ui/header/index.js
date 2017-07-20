@@ -19,9 +19,6 @@ class Header extends Component{
             }
         })
     }
-    openNavigation(){
-        this.props.openPanel()
-    }
     render(){
         const { route, navigator } = this.props
         return (
@@ -31,7 +28,7 @@ class Header extends Component{
                     <Image source={{uri: `${url.STATIC_SERVER}/assets/${url.CLIENT_ID}/mod_app/home/bg_mainscreen.jpg`}} style={[global.row, {height: w.height, width: w.width, paddingTop:24, paddingLeft:15, paddingRight:15, alignItems:'flex-start', marginTop:7,position:'absolute'}]} resizeMode="stretch">
                         <View style={[global.col4, global.left]}>
                             {route.id == 'Home' ? (
-                                <TouchableOpacity onPress={this.openNavigation.bind(this)}>
+                                <TouchableOpacity onPress={() => this.props.openPanel()}>
                                     <View style={styleHeader.buttonNavWr}><Image style={styleHeader.buttonNav} source={require("./img/icon/nav.png")} ></Image></View>
                                 </TouchableOpacity>
                             ) : (

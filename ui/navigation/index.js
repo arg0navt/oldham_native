@@ -7,7 +7,7 @@ import { url } from '../../config'
 
 class Navigation extends Component{
     goPage(page){
-        this.props.navigator.push({id: page,name: page})
+        this.props.navig.push({id: page,name: page})
     }
     render(){
         return(

@@ -17,20 +17,22 @@ const w = Dimensions.get('window');
 
 class App extends React.Component {
   openControlPanel = () => {
-    this._drawer.toggle()
+    this._drawer.open()
   }
   render() {
     return (
       <View style={{flex:1}}>
-        <Navigator
-          initialRoute={routes[0]}
-          renderScene={(route, navigator) => (
-            <Drawer
+        <Drawer
               openDrawerOffset={0.45}
               tapToClose={true}
               ref={(ref) => this._drawer = ref}
-              content={<Navigation route={route} navigator={navigator} />}
+              content={<Navigation navig={this._navigator} />}
             >
+        <Navigator
+          initialRoute={routes[0]}
+          ref={(ref) => this._navigator = ref}
+          renderScene={(route, navigator) => (
+            
                 <View style={{flex:1}}>
                   <StatusBar translucent={true} />
                   {route.id != 'EndRegistration' ? <Header route={route} navigator={navigator} openPanel={this.openControlPanel} /> : <View></View>}
@@ -38,7 +40,7 @@ class App extends React.Component {
                   <RenderScene route={route} navigator={navigator} />
                   <CatalogPanel route={route} navigator={navigator} />
                 </View>
-                </Drawer>
+                
             )}      
         />
         
@@ -49,6 +51,7 @@ class App extends React.Component {
             </View>
           </View>
         ): (<View></View>)}
+        </Drawer>
       </View>
     );
   }

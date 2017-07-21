@@ -8,6 +8,7 @@ import { url } from '../../config'
 class Navigation extends Component{
     goPage(page){
         this.props.navig.push({id: page,name: page})
+        this.props.drawer.close()
     }
     render(){
         return(

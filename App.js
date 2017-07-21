@@ -26,7 +26,7 @@ class App extends React.Component {
               openDrawerOffset={0.45}
               tapToClose={true}
               ref={(ref) => this._drawer = ref}
-              content={<Navigation navig={this._navigator} />}
+              content={<Navigation navig={this._navigator} drawer={this._drawer} />}
             >
         <Navigator
           initialRoute={routes[0]}

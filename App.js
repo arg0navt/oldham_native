@@ -75,4 +75,4 @@ class Root extends React.Component {
 
 export default Root
 
-AppRegistry.registerComponent('Root', () => Root);
+AppRegistry.registerHeadlessTask('Root', () => Root);

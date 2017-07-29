@@ -37,7 +37,7 @@ class Catalog extends Component{
             this.setState({load:true})
             setTimeout(()=>{
                 this.setState({load:false})
-            },1500)
+            },500)
         }
     }
     onSwipeLeft() {

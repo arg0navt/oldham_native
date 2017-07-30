@@ -102,6 +102,26 @@ class Item extends Component{
             })
         }
     }
+    componentWillReceiveProps(nextProps){
+            this.setState({link:transliterate(this.props.item.category_name)})
+        const found = _.filter(this.props.Store.basket, (item) => { return item.item_id == this.props.item.item_id; })
+        if (found.length != [] ){
+            found.map((item, index) => {
+                if (item.width == 30){
+                    setTimeout(()=>{
+                        this.setState({num: item.call || 1,width:30})
+                    },10)
+                } else {
+                    setTimeout(()=>{
+                        this.setState({
+                            num40: item.call || 1,
+                            width:40
+                        })
+                    },10)
+                }
+            })
+        }
+    }
     render(){
         const {props} = this
         const {item} = this.props

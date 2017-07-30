@@ -93,7 +93,6 @@ class ItemBasket extends Component{
         },10)
     }
     componentWillReceiveProps(nextProps){
-        setTimeout(()=>{
             const found = _.filter(nextProps.Store.basket, (item) => { return item.item_id == nextProps.item.item_id && item.width == nextProps.item.width; })
             if (found.length != [] ){
             found.map((item, index) => {
@@ -114,7 +113,6 @@ class ItemBasket extends Component{
                 }
             })
         }
-    },10)
     }
     render(){
         return(

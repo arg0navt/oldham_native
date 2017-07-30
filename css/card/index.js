@@ -96,10 +96,10 @@ export default StyleSheet.create({
         fontSize:8,
         color:'#fff',
         textAlign:'center',
-        paddingTop:5,
         borderWidth:1,
         borderColor:'#ffffff',
         borderStyle:'solid',
+        paddingTop:8
     },
     cardButtonOne:{
     },

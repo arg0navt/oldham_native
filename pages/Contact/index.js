@@ -11,6 +11,9 @@ class Contact extends Component{
         const url = link;
         Linking.openURL(url).catch();
     }
+    linkTel(link){
+        Communications.phonecall('88162926494', true)
+    }
     render(){
         return(
             <ScrollView>
@@ -31,14 +34,14 @@ class Contact extends Component{
                         </View>
                     </View>
                     <View style={con.itemPhone}>
-                        <TouchableOpacity style={con.itemPhoneLeft} onPress={() => Communications.phonecall('+78162926494', true)}>
+                        <TouchableOpacity style={con.itemPhoneLeft} onPress={this.linkTel.bind(this)}>
                             <View>
                                 <Text style={con.itemPhoneText}>Телефон</Text>
                                 <Text style={con.itemPhoneSpan}>8 (8162) 92-64-94</Text>
                             </View>
                         </TouchableOpacity>
                         <View style={con.itemPhoneRight}>
-                            <TouchableOpacity style={con.itemPhoneButton}><Text style={con.itemPhoneButtonColor}>позвонить</Text></TouchableOpacity>
+                            <TouchableOpacity onPress={this.linkTel.bind(this)} style={con.itemPhoneButton}><Text style={con.itemPhoneButtonColor}>позвонить</Text></TouchableOpacity>
                         </View>
                     </View>
                     <View style={con.itemPhone}>

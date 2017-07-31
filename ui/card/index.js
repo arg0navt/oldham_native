@@ -36,7 +36,7 @@ const ProgressBar = (props, {num, loyalty}) => {
     <View style={progressBar.wrap}>
         <View style={progressBar.line}></View>
         <View style={progressBar.lineProgressWrap}>
-            <View style={[progressBar.lineProgress, {width:width}]}></View>
+            {width !== 1 ? <View style={[progressBar.lineProgress, {width:width}]}></View> : null}
         </View>
         <View style={progressBar.items}>
             {props.loyalty.settings.cards.map((item, index) =>{

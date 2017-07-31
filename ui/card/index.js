@@ -26,7 +26,7 @@ const ProgressBar = (props, {num, loyalty}) => {
     } else if (props.num > 50){
         props.num = 50 + props.num / 2
     }
-    let width = '';
+    let width = props.num;
     if (width === 1){
         width = 1
     } else {

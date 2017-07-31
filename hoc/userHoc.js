@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import axios  from 'axios';
 import { Api } from '../config'
 import routes from '../config/routes'
@@ -38,6 +39,8 @@ const UserHoc = (ComposedComponent) => {
                         .then((data) => {
                             this.pushProfile(data.user)
                             this.getLoyality(data.user.user_token)
+                            AsyncStorage.setItem('user', data.user);
+                            AsyncStorage.getItem('user').then((value) => console.log(value))
                             this.navigator.push({id: reset, name: reset}) 
                         })
                         .catch((message) => {

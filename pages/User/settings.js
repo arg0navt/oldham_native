@@ -133,6 +133,7 @@ export default connect(
         pushProfile: (item) => {dispatch({type:'PROFILE', payload:item})},
         pushLoyalty: (item) => {dispatch({type:'LOYALITY', payload:item})},
         initError: (text) => {dispatch({type:'ERROR', payload:text})},
-        removeError:() => {dispatch({type:'DROP_ERROR'})}
+        removeError:() => {dispatch({type:'DROP_ERROR'})},
+        pushToken: (token) => {dispatch({type:'TOKEN', payload:token})},
     })
 )(UserHoc(UserSettings))

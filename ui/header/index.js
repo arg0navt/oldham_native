@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import { AppRegistry, Navigator, StyleSheet, Text, View, Image, ScrollView, Dimensions, TouchableOpacity, BackAndroid } from 'react-native';
+import { AsyncStorage, AppRegistry, Navigator, StyleSheet, Text, View, Image, ScrollView, Dimensions, TouchableOpacity, BackAndroid } from 'react-native';
 import global from '../../css/global';
 import styleHeader from '../../css/header';
-import { connect } from 'react-redux'
-import { url } from '../../config'
-import { Router, Route, Animations, Schema, Actions } from 'react-native-redux-router'
+import { connect } from 'react-redux';
+import { url } from '../../config';
+import { Router, Route, Animations, Schema, Actions } from 'react-native-redux-router';
 
 const w = Dimensions.get('window');
 
@@ -18,6 +18,11 @@ class Header extends Component{
                 return true;
             }
         })
+    }
+    delete(navigator){
+        AsyncStorage.removeItem('user');
+        this.props.deleteUser();
+        navigator.push({id: 'Home',name: 'Home'})
     }
     render(){
         const { route, navigator } = this.props
@@ -43,13 +48,19 @@ class Header extends Component{
                             <View></View>
                         )}
                         <View style={[global.col4, global.right]}>
-                            <TouchableOpacity onPress={() => navigator.push({id: 'Basket',name: 'Basket'})} style={styleHeader.buttonShopWr}>
-                                <Image style={styleHeader.buttonShopImage} source={require("./img/icon/shop.png")}>
-                                    {this.props.Store.basket.length != 0 ? (
-                                        <View style={styleHeader.numShop}></View>
-                                    ) : (<View></View>)}
-                                </Image>
-                            </TouchableOpacity>
+                            {route.id != 'User' ? (
+                                <TouchableOpacity onPress={() => navigator.push({id: 'Basket',name: 'Basket'})} style={styleHeader.buttonShopWr}>
+                                    <Image style={styleHeader.buttonShopImage} source={require("./img/icon/shop.png")}>
+                                        {this.props.Store.basket.length != 0 ? (
+                                            <View style={styleHeader.numShop}></View>
+                                        ) : (<View></View>)}
+                                    </Image>
+                                </TouchableOpacity>
+                            ) : (
+                                <TouchableOpacity onPress={this.delete.bind(this, navigator)} style={styleHeader.buttonShopWr}>
+                                    <Image style={[styleHeader.buttonShopImage, {marginLeft:25, width:15, height:17}]} source={require("../../img/icon/close.png")} />
+                                </TouchableOpacity>
+                            )}
                         </View>
                     </Image>
                 </View>
@@ -61,5 +72,8 @@ class Header extends Component{
 export default connect(
     state => ({
         Store: state
+    }),
+    dispatch => ({
+        deleteUser: () => dispatch({type:'DELETE_USER'}),
     })
 )(Header)

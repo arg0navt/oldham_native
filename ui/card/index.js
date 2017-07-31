@@ -26,11 +26,17 @@ const ProgressBar = (props, {num, loyalty}) => {
     } else if (props.num > 50){
         props.num = 50 + props.num / 2
     }
+    let width = '';
+    if (width === 1){
+        width = 1
+    } else {
+        width = `${props.num}%`
+    }
     return (
     <View style={progressBar.wrap}>
         <View style={progressBar.line}></View>
         <View style={progressBar.lineProgressWrap}>
-            <View style={[progressBar.lineProgress, {width:`${props.num}%`}]}></View>
+            <View style={[progressBar.lineProgress, {width:width}]}></View>
         </View>
         <View style={progressBar.items}>
             {props.loyalty.settings.cards.map((item, index) =>{

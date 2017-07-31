@@ -96,12 +96,13 @@ export default StyleSheet.create({
         fontSize:8,
         color:'#fff',
         textAlign:'center',
-        borderWidth:1,
+        borderLeftWidth:1,
         borderColor:'#ffffff',
         borderStyle:'solid',
         paddingTop:8
     },
     cardButtonOne:{
+        borderLeftWidth:0,
     },
     cardButtonText:{
         fontSize:11,

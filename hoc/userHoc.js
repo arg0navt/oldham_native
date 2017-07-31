@@ -39,8 +39,7 @@ const UserHoc = (ComposedComponent) => {
                         .then((data) => {
                             this.pushProfile(data.user)
                             this.getLoyality(data.user.user_token)
-                            AsyncStorage.setItem('user', data.user);
-                            AsyncStorage.getItem('user').then((value) => console.log(value))
+                            AsyncStorage.setItem('user', JSON.stringify(data.user));
                             this.navigator.push({id: reset, name: reset}) 
                         })
                         .catch((message) => {
@@ -95,7 +94,7 @@ const UserHoc = (ComposedComponent) => {
                         this.pushLoyalty(data)
                     })
                     .catch((message) => {
-                        this.error(message)
+                        this.getToken();
                     })
             })
             .catch((error) => {})

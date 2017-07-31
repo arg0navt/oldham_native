@@ -14,11 +14,23 @@ class Home extends Component{
     constructor(props){
         super(props)
         this.state = {
-            loadCard:false
+            loadCard:false,
         }
     }
     componentDidMount(){
-        this.props.getToken()
+        AsyncStorage.getItem('user').then((value) => {
+            if (value) {
+                const user = JSON.parse(value);
+                this.props.userObj(user);
+                this.props.getLoyality(user.user_token)
+                this.props.pushToken(user.user_token)
+            } else {
+                this.props.getToken()
+            }
+        })
+        if (this.props.Store.error.errorText !== ""){
+            this.props.getToken()
+        }
     }
     componentWillReceiveProps(nextProps){
         if(nextProps.Store.user != this.props.Store.user){
@@ -29,16 +41,6 @@ class Home extends Component{
         }
     }
     render(){
-        let token = ''
-    AsyncStorage.getItem('user').then((value) => {
-      if (value !== null) {
-        token = value.user_token
-      } else {
-        token = 'null'
-      }
-    }
-      
-    )
         return (
             <ScrollView style={{flex:1, paddingLeft:15, paddingRight:15}}>
                 <Slider nav={this.props.navigator} />
@@ -49,7 +51,6 @@ class Home extends Component{
                     <View style={{height:200, display:'flex',flexWrap: 'wrap',justifyContent:'center',alignItems:'center',flexDirection:'row'}}><ActivityIndicator color={'#d34536'}/></View>
                 )}
                 <Catalog nav={this.props.navigator} />
-                <Text style={{color:'#fff'}}>{token}</Text>
             </ScrollView>
         )
     }
@@ -60,6 +61,11 @@ export default connect(
         Store: state
     }),
     dispatch =>({
+        userObj: (item) => {dispatch({type:'PUSH_USER', payload:item})},
+        userLoyalty: (item) => {dispatch({type:'PUSH_USER_LOYALTY', payload:item})},
+        pushLoyalty: (item) => {dispatch({type:'LOYALITY', payload:item})},
         pushToken: (token) => {dispatch({type:'TOKEN', payload:token})},
+        initError: (text) => {dispatch({type:'ERROR', payload:text})},
+        removeError:() => {dispatch({type:'DROP_ERROR'})}
     })
 )(UserHoc(Home))
